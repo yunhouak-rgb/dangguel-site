@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# 사이트맵 위치
+Sitemap: https://dangguel.netlify.app/sitemap.xml
+
+# 크롤링 제외할 파일/폴더 (필요시)
+# Disallow: /admin/
+# Disallow: /private/
