@@ -1,67 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <url>
     <loc>https://dangguel.netlify.app/</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
     <loc>https://dangguel.netlify.app/diagnosis.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
+  <url>
+    <loc>https://dangguel.netlify.app/quiz.html</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
+
   <url>
     <loc>https://dangguel.netlify.app/blog_index.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
     <loc>https://dangguel.netlify.app/blog_post_company.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_interview.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://dangguel.netlify.app/blog_post_coverletter_support_motivation_examples.html</loc>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
     <loc>https://dangguel.netlify.app/blog_post_experience.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
-    <loc>https://dangguel.netlify.app/nurse_jasoser_motivation.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://dangguel.netlify.app/blog_post_interview.html</loc>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
-    <loc>https://dangguel.netlify.app/teacher_jasoser_motivation.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://dangguel.netlify.app/blog_post_interview_1min_self_intro_examples_master.html</loc>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
   <url>
-    <loc>https://dangguel.netlify.app/secretary_jasoser_motivation.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://dangguel.netlify.app/blog_post_nurse_jasoser_motivation.html</loc>
+    <lastmod>2026-03-14</lastmod>
   </url>
-  
+
+  <url>
+    <loc>https://dangguel.netlify.app/blog_post_resume_structure.html</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
+
+  <url>
+    <loc>https://dangguel.netlify.app/blog_post_secretary_jasoser_motivation.html</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
+
+  <url>
+    <loc>https://dangguel.netlify.app/blog_post_teacher_jasoser_motivation.html</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
 </urlset>
