@@ -1,3 +1,13 @@
-/blog/index.html   /blog_index   301
-/blog/             /blog_index   301
-/blog              /blog_index   301
+/blog/index.html                               /blog_index.html                                  301
+/blog/                                         /blog_index.html                                  301
+/blog                                          /blog_index.html                                  301
+/blog_index                                    /blog_index.html                                  301
+/diagnosis                                     /diagnosis.html                                   301
+/blog/posts/interview-strategy.html            /blog_post_interview.html                         301
+/blog/posts/experience-differentiation.html    /blog_post_experience.html                        301
+/blog/posts/nurse-jasoser-motivation.html      /blog_post_nurse_jasoser_motivation.html          301
+/blog/posts/nurse-jasoser-personality.html     /blog_post_resume_structure.html                   301
+/blog/posts/secretary-jasoser-motivation.html  /blog_post_secretary_jasoser_motivation.html      301
+/blog/posts/teacher-jasoser-motivation.html    /blog_post_teacher_jasoser_motivation.html        301
+/blog/posts/jasoser-mistakes.html              /blog_post_resume_structure.html                   301
+/blog_post_support                             /blog_post_support.html                           301

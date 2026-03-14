@@ -11,7 +11,7 @@ const ROOT = process.cwd();
 const BASE_URL = process.env.BASE_URL || "https://dangguel.netlify.app";
 
 // 글 파일 규칙: blog_post_ 로 시작하는 파일을 "블로그 글"로 봅니다.
-// 예) blog_post_company.html  -> URL: /blog_post_company
+// 예) blog_post_company.html  -> URL: /blog_post_company.html
 const POST_PREFIX = "blog_post_";
 
 function listPostFiles() {
@@ -29,7 +29,7 @@ function slugFromFilename(filename) {
 }
 
 function urlFromFilename(filename) {
-  return `/${slugFromFilename(filename)}`;
+  return `/${filename}`;
 }
 
 function safeRead(file) {
@@ -95,21 +95,54 @@ function buildBlogIndex(posts) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>취업 꿀팁 - 당글 블로그</title>
   <meta name="description" content="자소서 작성법, 면접 준비, 기업 분석 등 취업 전략을 정리한 당글 블로그입니다." />
-  <link rel="canonical" href="${BASE_URL}/blog_index" />
+  <meta name="keywords" content="자소서 작성법, 면접 준비, 기업 분석, 취업 전략, 취업 블로그, 취준생 팁" />
+  <link rel="canonical" href="${BASE_URL}/blog_index.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="취업 꿀팁 - 당글 블로그" />
   <meta property="og:description" content="취업 전략 글 모음" />
-  <meta property="og:url" content="${BASE_URL}/blog_index" />
+  <meta property="og:url" content="${BASE_URL}/blog_index.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="취업 꿀팁 - 당글 블로그" />
+  <meta name="twitter:description" content="취업 전략 글 모음" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "당글 취업 꿀팁 블로그",
+    "description": "취준생을 위한 실전 취업 전략과 자소서, 면접, 기업 분석 가이드",
+    "url": "${BASE_URL}/blog_index.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "당글"
+    }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HK51X34WHJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HK51X34WHJ');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
     <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
       <a href="/" class="font-extrabold tracking-tight text-lg">당글</a>
       <nav class="flex items-center gap-3 text-sm">
-        <a class="px-3 py-2 rounded-lg hover:bg-slate-100" href="/diagnosis">무료 진단</a>
-        <a class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200" href="/blog_index">취업 꿀팁</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-slate-100" href="/diagnosis.html">무료 진단</a>
+        <a class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200" href="/blog_index.html">취업 꿀팁</a>
         <a class="px-3 py-2 rounded-lg text-white bg-slate-900 hover:opacity-95" href="/">가이드북 구매</a>
       </nav>
     </div>
@@ -131,7 +164,7 @@ function buildBlogIndex(posts) {
       <div class="font-extrabold text-lg">이제 막연한 준비는 그만</div>
       <div class="mt-2 text-slate-700">무료 진단으로 현재 상태부터 확인해보세요.</div>
       <div class="mt-4 flex gap-3 flex-col sm:flex-row">
-        <a class="px-4 py-3 rounded-xl bg-slate-900 text-white font-bold text-center" href="/diagnosis">무료 진단 받기</a>
+        <a class="px-4 py-3 rounded-xl bg-slate-900 text-white font-bold text-center" href="/diagnosis.html">무료 진단 받기</a>
         <a class="px-4 py-3 rounded-xl bg-slate-100 font-bold text-center" href="/">가이드북 보기</a>
       </div>
     </div>
@@ -188,7 +221,9 @@ function main() {
   // 2) sitemap.xml 생성 (홈 + 블로그 목록 + 각 글)
   const pages = [
     { loc: `${BASE_URL}/`, lastmod: getLastModDate("index.html") || new Date().toISOString().slice(0,10) },
-    { loc: `${BASE_URL}/blog_index`, lastmod: new Date().toISOString().slice(0,10) },
+    { loc: `${BASE_URL}/diagnosis.html`, lastmod: getLastModDate("diagnosis.html") || new Date().toISOString().slice(0,10) },
+    { loc: `${BASE_URL}/quiz.html`, lastmod: getLastModDate("quiz.html") || new Date().toISOString().slice(0,10) },
+    { loc: `${BASE_URL}/blog_index.html`, lastmod: new Date().toISOString().slice(0,10) },
     ...posts.map(p => ({ loc: `${BASE_URL}${p.url}`, lastmod: p.date }))
   ];
   writeFile("sitemap.xml", buildSitemap(pages));

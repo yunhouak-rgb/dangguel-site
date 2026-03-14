@@ -1,280 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO 최적화 -->
-    <title>취업 꿀팁 - 자소서 작성법, 면접 준비, 기업 분석 완전 정복 | 당글 블로그</title>
-    <meta name="description" content="취준생을 위한 실전 취업 전략! 자소서 작성법, 면접 준비 방법, 경험 쪼개기, 기업 분석까지. 합격률을 높이는 무료 취업 가이드.">
-    <meta name="keywords" content="자소서 작성법, 면접 준비, 면접 질문, 취업 전략, 경험 쪼개기, 기업 분석, 합격 자소서, 취준생 팁">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="취업 꿀팁 블로그 - 당글">
-    <meta property="og:description" content="자소서, 면접, 기업분석까지! 취준생을 위한 실전 가이드">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dangguel.netlify.app/blog/">
-    
-    <!-- Canonical -->
-    <link rel="canonical" href="https://dangguel.netlify.app/blog/">
-    
-    <!-- 구조화 데이터 -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "당글 취업 꿀팁 블로그",
-        "description": "취준생을 위한 실전 취업 전략 - 자소서 작성법, 면접 준비, 기업 분석",
-        "url": "https://dangguel.netlify.app/blog/",
-        "publisher": {
-            "@type": "Organization",
-            "name": "당글"
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>취업 꿀팁 - 당글 블로그</title>
+  <meta name="description" content="자소서 작성법, 면접 준비, 기업 분석 등 취업 전략을 정리한 당글 블로그입니다." />
+  <meta name="keywords" content="자소서 작성법, 면접 준비, 기업 분석, 취업 전략, 취업 블로그, 취준생 팁" />
+  <link rel="canonical" href="https://dangguel.netlify.app/blog_index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="취업 꿀팁 - 당글 블로그" />
+  <meta property="og:description" content="취업 전략 글 모음" />
+  <meta property="og:url" content="https://dangguel.netlify.app/blog_index.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="취업 꿀팁 - 당글 블로그" />
+  <meta name="twitter:description" content="취업 전략 글 모음" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "당글 취업 꿀팁 블로그",
+    "description": "취준생을 위한 실전 취업 전략과 자소서, 면접, 기업 분석 가이드",
+    "url": "https://dangguel.netlify.app/blog_index.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "당글"
     }
-    </script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HK51X34WHJ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-HK51X34WHJ');
-    </script>
-    
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        
-        .blog-card {
-            transition: all 0.3s ease;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-    </style>
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HK51X34WHJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HK51X34WHJ');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; }
+  </style>
 </head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+      <a href="/" class="font-extrabold tracking-tight text-lg">당글</a>
+      <nav class="flex items-center gap-3 text-sm">
+        <a class="px-3 py-2 rounded-lg hover:bg-slate-100" href="/diagnosis.html">무료 진단</a>
+        <a class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200" href="/blog_index.html">취업 꿀팁</a>
+        <a class="px-3 py-2 rounded-lg text-white bg-slate-900 hover:opacity-95" href="/">가이드북 구매</a>
+      </nav>
+    </div>
+  </header>
 
-<body class="bg-gray-50">
-    
-    <!-- Header -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="/" class="text-xl font-bold text-indigo-600">당글</a>
-                <div class="flex gap-6">
-                    <a href="/diagnosis.html" class="text-gray-700 hover:text-indigo-600 font-medium transition">무료 진단</a>
-                    <a href="blog_index.html" class="text-indigo-600 font-bold">취업 꿀팁</a>
-                    <a href="/#purchase" class="text-gray-700 hover:text-indigo-600 font-medium transition">가이드북 구매</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+      취업 꿀팁
+    </h1>
+    <p class="mt-3 text-slate-700">
+      글을 올리면 목록과 사이트맵이 자동으로 갱신됩니다.
+    </p>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-16 px-4 bg-gradient-to-br from-indigo-600 to-purple-600 text-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl sm:text-5xl font-black mb-6">
-                10번 지원해도 떨어지는<br>
-                <span class="text-yellow-300">진짜 이유</span>
-            </h1>
-            <p class="text-xl opacity-90 mb-8">
-                같은 실수를 반복하고 있지는 않나요?<br>
-                취업 성공의 핵심 전략을 확인하세요
-            </p>
-            <div class="flex gap-4 justify-center flex-wrap">
-                <a href="/diagnosis.html" class="px-8 py-4 bg-white text-indigo-600 rounded-full font-bold hover:bg-gray-100 transition">
-                    🎯 무료 진단 받기
-                </a>
-                <a href="/#purchase" class="px-8 py-4 bg-white/20 border-2 border-white text-white rounded-full font-bold hover:bg-white/30 transition">
-                    📚 가이드북 보기
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 블로그 포스트 리스트 -->
-    <section class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- 포스트 1: 기업 분석 -->
-                <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-md">
-                    <div class="bg-gradient-to-br from-green-500 to-teal-500 h-48 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-2">🏢</div>
-                            <div class="text-sm font-semibold opacity-90">기업 분석</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-green-600 font-semibold mb-2">지원 전략</div>
-                        <h3 class="text-xl font-bold mb-3">홈페이지 복사는 이제 그만</h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            "귀사의 비전에 공감하여..." 이렇게 쓰고 계시나요? 기업이 정말 원하는 건 이게 아닙니다. 4단계 분석법으로 정보 나열이 아닌 인사이트 도출하기.
-                        </p>
-                        <a href="/blog_post_company.html" class="text-green-600 font-semibold hover:underline">
-                            자세히 보기 →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- 포스트 2: 경험 쪼개기 -->
-                <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-md">
-                    <div class="bg-gradient-to-br from-pink-500 to-orange-500 h-48 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-2">🔍</div>
-                            <div class="text-sm font-semibold opacity-90">경험 정리</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-pink-600 font-semibold mb-2">차별화 전략</div>
-                        <h3 class="text-xl font-bold mb-3">평범한 경험도 차별화할 수 있다?</h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            "특별한 경험이 없어요" 이 말, 틀렸습니다. 경험을 보는 관점만 바꾸면 됩니다. 경험→활동→행동 3단계 쪼개기로 평범한 아르바이트도 강력한 소재로.
-                        </p>
-                        <a href="/blog_post_experience.html" class="text-pink-600 font-semibold hover:underline">
-                            자세히 보기 →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- 포스트 3: 면접 전략 -->
-                <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-md">
-                    <div class="bg-gradient-to-br from-blue-500 to-cyan-500 h-48 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-2">🎤</div>
-                            <div class="text-sm font-semibold opacity-90">면접 준비</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-blue-600 font-semibold mb-2">면접 대응</div>
-                        <h3 class="text-xl font-bold mb-3">면접관이 진짜 궁금한 것은?</h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            "자기소개 해보세요" 이 질문에 자기 자랑만 하고 있진 않나요? 면접관의 진짜 의도를 파악하세요. 1분 자기소개부터 실무진·임원진 면접까지.
-                        </p>
-                        <a href="/blog_post_interview.html" class="text-blue-600 font-semibold hover:underline">
-                            자세히 보기 →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- 포스트 4: 비서 자소서 -->
-                <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-md">
-                    <div class="bg-gradient-to-br from-indigo-500 to-purple-500 h-48 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-2">💼</div>
-                            <div class="text-sm font-semibold opacity-90">비서 자소서</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-indigo-600 font-semibold mb-2">직무별 가이드</div>
-                        <h3 class="text-xl font-bold mb-3">비서 자소서 지원동기와 입사 후 포부</h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            대기업 비서실, 외국계 기업, 중소기업 임원 비서별 차별화 전략과 합격 예시. 3단계 작성 전략으로 완성하기.
-                        </p>
-                        <a href="/secretary_jasoser_motivation.html" class="text-indigo-600 font-semibold hover:underline">
-                            자세히 보기 →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- 포스트 5: 간호사 자소서 -->
-                <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-md">
-                    <div class="bg-gradient-to-br from-pink-500 to-red-500 h-48 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-2">💉</div>
-                            <div class="text-sm font-semibold opacity-90">간호사 자소서</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-pink-600 font-semibold mb-2">직무별 가이드</div>
-                        <h3 class="text-xl font-bold mb-3">간호사 자소서 지원동기 쓰는법</h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            대학병원, 종합병원, 전문병원별 지원동기 차별화 전략. 신규 간호사부터 경력직까지 실전 가이드와 예시.
-                        </p>
-                        <a href="/blog/posts/nurse-jasoser-motivation.html" class="text-pink-600 font-semibold hover:underline">
-                            자세히 보기 →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- 포스트 6: 보육교사 자소서 -->
-                <article class="blog-card bg-white rounded-2xl overflow-hidden shadow-md">
-                    <div class="bg-gradient-to-br from-amber-500 to-orange-500 h-48 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-2">👶</div>
-                            <div class="text-sm font-semibold opacity-90">보육교사 자소서</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-sm text-amber-600 font-semibold mb-2">직무별 가이드</div>
-                        <h3 class="text-xl font-bold mb-3">보육교사 자소서 지원동기와 포부</h3>
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            국공립, 민간, 직장, 가정 어린이집별 차별화 전략. 신규 보육교사를 위한 단계별 작성법과 실전 예시.
-                        </p>
-                        <a href="/blog/posts/teacher-jasoser-motivation.html" class="text-amber-600 font-semibold hover:underline">
-                            자세히 보기 →
-                        </a>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA 섹션 -->
-    <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6">
-                이제 막연한 준비는 그만<br>
-                체계적인 전략으로 시작하세요
-            </h2>
-            <p class="text-xl mb-8 opacity-90">
-                구체적인 방법론과 실습 워크시트가 필요하다면?
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/diagnosis.html" class="px-12 py-5 bg-white text-indigo-600 rounded-full font-bold text-lg hover:bg-gray-100 transition">
-                    🎯 내 현재 실력 진단하기
-                </a>
-                <a href="/#purchase" class="px-12 py-5 bg-white/20 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white/30 transition">
-                    📚 가이드북 자세히 보기
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="mb-6">
-                <a href="/" class="text-2xl font-bold text-white">당글</a>
-            </div>
-            <div class="flex flex-wrap justify-center gap-6 mb-6">
-                <a href="/diagnosis.html" class="hover:text-white transition">무료 진단</a>
-                <a href="blog_index.html" class="hover:text-white transition">블로그</a>
-                <a href="/#purchase" class="hover:text-white transition">가이드북 구매</a>
-            </div>
-            <p class="text-sm">
-                © 2025 당글. All rights reserved.<br>
-                Contact: yuncontest@naver.com
-            </p>
-        </div>
-    </footer>
-
-    <!-- 플로팅 버튼 -->
-    <a href="https://open.kakao.com/o/sTpjuoQh" 
-       class="fixed right-5 bottom-5 w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl flex flex-col items-center justify-center z-50 transition-all transform hover:scale-110" 
-       target="_blank" 
-       rel="noopener">
-        <span class="text-2xl">💬</span>
-        <span class="text-xs font-semibold mt-1">상담</span>
+    <section class="mt-8 grid gap-4 sm:grid-cols-2">
+      
+    <a href="/blog_post_company.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">홈페이지 복사는 이제 그만</div>
+      <div class="mt-2 text-slate-700">기업 분석 방법 완전 정복!</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
     </a>
+  
 
+    <a href="/blog_post_coverletter_support_motivation_examples.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">자소서 지원동기 예시 10개 (직무별 합격 구조)</div>
+      <div class="mt-2 text-slate-700">자소서 지원동기 예시 10개를 직무별로 정리했습니다. 바로 활용 가능한 구조와 문장 템플릿까지 제공합니다.</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_experience.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">평범한 경험도 차별화할 수 있다?</div>
+      <div class="mt-2 text-slate-700">특별한 경험이 없다고요? 아닙니다. 경험 쪼개기 방법으로 평범한 아르바이트, 동아리 활동도 차별화된 스토리로 만드는 법. 취업 경험 정리의 핵심 전략.</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_interview.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">면접관의 마음을 사로잡는 면접 전략</div>
+      <div class="mt-2 text-slate-700">1분 자기소개부터 압박면접까지, 실무진·임원진 면접관 유형별 맞춤 대응 전략. 합격률을 높이는 면접 준비법과 주요 질문 완벽 대응 가이드</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_interview_1min_self_intro_examples_master.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">면접 1분 자기소개 예시 20개 합격 구조 완전 가이드</div>
+      <div class="mt-2 text-slate-700">면접 1분 자기소개 예시 20개를 직무별로 정리했습니다. 합격 구조 공식, 신입·경력 차이, 흔한 실수, 연습 방법, FAQ까지 한 번에 정리했습니다.</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_nurse_jasoser_motivation.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">간호사 자소서 지원동기 쓰는법 (대학병원, 종합병원, 전문병원 예시)</div>
+      <div class="mt-2 text-slate-700">간호사 자기소개서 지원동기 작성법. 대학병원, 종합병원, 전문병원별 차별화 전략과 합격 예시. 신규 간호사부터 경력직까지 실전 가이드</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_resume_structure.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">서류 탈락 줄이는 자소서 구조 3단계</div>
+      <div class="mt-2 text-slate-700">자소서가 자꾸 탈락한다면 구조부터 점검해야 합니다. 바로 적용 가능한 3단계 구조를 정리했습니다.</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_secretary_jasoser_motivation.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">비서 자소서 지원동기와 입사 후 포부 쓰는법</div>
+      <div class="mt-2 text-slate-700">비서 자기소개서 지원동기와 입사 후 포부 작성법. 대기업 비서실, 외국계 기업, 중소기업 임원 비서별 차별화 전략과 합격 예시. 신입 비서부터 경력직까지 실전 가이드</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+
+    <a href="/blog_post_teacher_jasoser_motivation.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+      <div class="text-sm text-slate-500">2026-03-14</div>
+      <div class="mt-2 text-xl font-extrabold text-slate-900">보육교사 자소서 지원동기와 입사 후 포부 쓰는법</div>
+      <div class="mt-2 text-slate-700">보육교사 자기소개서 지원동기와 입사 후 포부 작성법. 국공립, 민간, 직장, 가정 어린이집별 차별화 전략과 합격 예시. 신규 보육교사부터 경력직까지 실전 가이드</div>
+      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
+    </a>
+  
+    </section>
+
+    <div class="mt-10 rounded-2xl p-6 bg-white border border-slate-200">
+      <div class="font-extrabold text-lg">이제 막연한 준비는 그만</div>
+      <div class="mt-2 text-slate-700">무료 진단으로 현재 상태부터 확인해보세요.</div>
+      <div class="mt-4 flex gap-3 flex-col sm:flex-row">
+        <a class="px-4 py-3 rounded-xl bg-slate-900 text-white font-bold text-center" href="/diagnosis.html">무료 진단 받기</a>
+        <a class="px-4 py-3 rounded-xl bg-slate-100 font-bold text-center" href="/">가이드북 보기</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-slate-600">
+      © 2025 당글. Contact: yuncontest@naver.com
+    </div>
+  </footer>
 </body>
 </html>
