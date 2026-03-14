@@ -1,78 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://dangguel.netlify.app/</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/diagnosis.html</loc>
+    <loc>https://dangguel.netlify.app/diagnosis</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/quiz.html</loc>
+    <loc>https://dangguel.netlify.app/blog</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_index.html</loc>
+    <loc>https://dangguel.netlify.app/blog/interview</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_company.html</loc>
+    <loc>https://dangguel.netlify.app/blog/cover-letter</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_coverletter_support_motivation_examples.html</loc>
+    <loc>https://dangguel.netlify.app/blog/company-analysis</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_experience.html</loc>
+    <loc>https://dangguel.netlify.app/blog/job-search-strategy</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_interview.html</loc>
+    <loc>https://dangguel.netlify.app/blog/interview-strategy</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_interview_1min_self_intro_examples_master.html</loc>
+    <loc>https://dangguel.netlify.app/blog/interview-1minute-self-introduction-examples</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_interview_final_comment_examples.html</loc>
+    <loc>https://dangguel.netlify.app/blog/interview-final-comment-examples</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_nurse_jasoser_motivation.html</loc>
+    <loc>https://dangguel.netlify.app/blog/cover-letter-motivation-examples</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_resume_structure.html</loc>
+    <loc>https://dangguel.netlify.app/blog/cover-letter-structure-3-steps</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_secretary_jasoser_motivation.html</loc>
+    <loc>https://dangguel.netlify.app/blog/experience-story-structuring</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_support.html</loc>
+    <loc>https://dangguel.netlify.app/blog/nurse-cover-letter-motivation</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
-
   <url>
-    <loc>https://dangguel.netlify.app/blog_post_teacher_jasoser_motivation.html</loc>
+    <loc>https://dangguel.netlify.app/blog/secretary-cover-letter-motivation</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
+  <url>
+    <loc>https://dangguel.netlify.app/blog/teacher-cover-letter-motivation</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
+  <url>
+    <loc>https://dangguel.netlify.app/blog/company-analysis-framework</loc>
+    <lastmod>2026-03-14</lastmod>
+  </url>
+  <url>
+    <loc>https://dangguel.netlify.app/blog/job-search-scope-strategy</loc>
     <lastmod>2026-03-14</lastmod>
   </url>
 </urlset>
