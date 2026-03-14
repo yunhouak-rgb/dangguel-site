@@ -266,28 +266,25 @@ function pageShell({ title, description, canonical, ogType = "website", ogTitle,
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Noto Sans KR', sans-serif; }
-  </style>
+  <link rel="stylesheet" href="/styles/site.css" />
 </head>
 <body class="${bodyClass}">
-  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-      <a href="/" class="text-lg font-extrabold tracking-tight text-slate-900">당글</a>
-      <nav class="flex flex-wrap items-center gap-2 text-sm">
-        <a href="/diagnosis" class="rounded-full px-3 py-2 text-slate-700 hover:bg-slate-100">무료 진단</a>
-        <a href="/blog" class="rounded-full px-3 py-2 text-slate-700 hover:bg-slate-100">블로그</a>
-        <a href="/blog/interview" class="rounded-full px-3 py-2 text-slate-700 hover:bg-slate-100">면접</a>
-        <a href="/blog/cover-letter" class="rounded-full px-3 py-2 text-slate-700 hover:bg-slate-100">자소서</a>
-        <a href="/#ebook" class="rounded-full bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-800">가이드북</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="/" class="site-logo">당글</a>
+      <nav class="site-nav">
+        <a href="/diagnosis">무료 진단</a>
+        <a href="/blog">블로그</a>
+        <a href="/blog/interview">면접</a>
+        <a href="/blog/cover-letter">자소서</a>
+        <a href="/#ebook" class="nav-cta">가이드북</a>
       </nav>
     </div>
   </header>
   ${mainContent}
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-600">
-      <div class="flex flex-wrap gap-4">
+  <footer class="footer">
+    <div class="container" style="padding-top:40px;padding-bottom:40px;">
+      <div class="footer__grid">
         <a href="/" class="hover:text-slate-900">홈</a>
         <a href="/blog" class="hover:text-slate-900">블로그 허브</a>
         <a href="/blog/interview" class="hover:text-slate-900">면접</a>
@@ -296,36 +293,50 @@ function pageShell({ title, description, canonical, ogType = "website", ogTitle,
         <a href="/blog/job-search-strategy" class="hover:text-slate-900">지원 전략</a>
         <a href="/diagnosis" class="hover:text-slate-900">무료 진단</a>
       </div>
-      <div class="mt-4">© 2025 당글. Contact: yuncontest@naver.com</div>
+      <div style="margin-top:16px;color:var(--text-secondary);font-size:0.95rem;">© 2025 당글. Contact: yuncontest@naver.com</div>
     </div>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const items = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      items.forEach((item) => observer.observe(item));
+    });
+  </script>
 </body>
 </html>`;
 }
 
 function buildArticleCard(article, compact = false) {
-  return `<article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-    <div class="text-sm font-semibold text-slate-500">${escapeHtml(TOPICS[article.topic].title)} · ${escapeHtml(article.tag)}</div>
-    <h3 class="mt-3 text-xl font-extrabold leading-snug text-slate-900">${escapeHtml(article.title)}</h3>
-    <p class="mt-3 text-slate-700">${escapeHtml(article.description)}</p>
-    ${compact ? "" : `<div class="mt-4 text-sm text-slate-500">${article.date} · ${article.readTime}</div>`}
-    <div class="mt-5 flex items-center gap-3">
-      <a href="${articleRoute(article)}" class="font-bold text-blue-700 hover:underline">글 읽기</a>
-      <a href="/diagnosis" class="text-sm font-semibold text-slate-600 hover:text-slate-900">진단으로 현재 위치 보기</a>
+  return `<article class="card fade-up">
+    <div class="card-label">${escapeHtml(TOPICS[article.topic].title)} · ${escapeHtml(article.tag)}</div>
+    <h3 class="card-title">${escapeHtml(article.title)}</h3>
+    <p class="card-text">${escapeHtml(article.description)}</p>
+    ${compact ? "" : `<div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">${article.date} · ${article.readTime}</div>`}
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="${articleRoute(article)}" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
     </div>
   </article>`;
 }
 
 function buildTopicCard(topicKey, posts) {
   const topic = TOPICS[topicKey];
-  return `<article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-    <div class="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">${topic.title}</div>
-    <h3 class="mt-4 text-2xl font-extrabold text-slate-900">${topic.heroTitle}</h3>
-    <p class="mt-3 text-slate-700">${topic.description}</p>
-    <ul class="mt-4 space-y-2 text-sm text-slate-600">
+  return `<article class="card fade-up">
+    <div class="card-label">${topic.title}</div>
+    <h3 class="card-title">${topic.heroTitle}</h3>
+    <p class="card-text">${topic.description}</p>
+    <ul class="plain-list" style="margin-top:18px;font-size:0.95rem;">
       ${posts.slice(0, 3).map(post => `<li>• <a href="${articleRoute(post)}" class="hover:text-slate-900 hover:underline">${escapeHtml(post.title)}</a></li>`).join("")}
     </ul>
-    <a href="${topicRoute(topicKey)}" class="mt-6 inline-flex rounded-full bg-slate-900 px-4 py-2 font-bold text-white hover:bg-slate-800">허브 보기</a>
+    <div style="margin-top:22px;"><a href="${topicRoute(topicKey)}" class="btn btn--secondary">허브 보기</a></div>
   </article>`;
 }
 
@@ -352,20 +363,20 @@ function buildBlogHub(posts) {
     ogUrl: `${BASE_URL}/blog`,
     schema,
     mainContent: `<main>
-      <section class="bg-slate-900 text-white">
-        <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 lg:grid-cols-[1.3fr_0.7fr]">
+      <section class="hero">
+        <div class="container hero__grid">
           <div>
-            <div class="inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-slate-100">검색 유입을 진단과 다음 행동으로 연결하는 취업 허브</div>
-            <h1 class="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl">취준생이 헤매지 않도록,<br />주제별로 정리한 취업 블로그</h1>
-            <p class="mt-5 max-w-3xl text-lg text-slate-200">검색으로 들어온 한 글에서 끝나지 않도록, 면접·자소서·기업 분석·지원 전략을 각각 허브로 묶었습니다. 글을 읽고 바로 무료 진단으로 현재 위치를 확인할 수 있게 설계했습니다.</p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="/diagnosis" class="rounded-full bg-white px-5 py-3 font-bold text-slate-900 hover:bg-slate-100">무료 진단 받기</a>
-              <a href="/#ebook" class="rounded-full border border-white/30 px-5 py-3 font-bold text-white hover:bg-white/10">가이드북 보기</a>
+            <div class="eyebrow">검색 유입을 진단과 다음 행동으로 연결하는 취업 허브</div>
+            <h1 class="hero__title">취준생이 헤매지 않도록,<br />주제별로 정리한 취업 블로그</h1>
+            <p class="hero__body">검색으로 들어온 한 글에서 끝나지 않도록, 면접·자소서·기업 분석·지원 전략을 각각 허브로 묶었습니다. 글을 읽고 바로 무료 진단으로 현재 위치를 확인할 수 있게 설계했습니다.</p>
+            <div class="hero__actions">
+              <a href="/diagnosis" class="btn btn--primary">무료 진단 받기</a>
+              <a href="/#ebook" class="btn btn--secondary">가이드북 보기</a>
             </div>
           </div>
-          <div class="rounded-3xl bg-white p-6 text-slate-900 shadow-2xl">
-            <div class="text-sm font-semibold text-slate-500">블로그 이용 가이드</div>
-            <ol class="mt-4 space-y-3 text-sm text-slate-700">
+          <div class="hero-card fade-up">
+            <div class="card-label">블로그 이용 가이드</div>
+            <ol style="margin:18px 0 0;padding-left:18px;color:var(--text-secondary);font-size:0.98rem;">
               <li>1. 먼저 필요한 토픽 허브를 선택합니다.</li>
               <li>2. 대표 글부터 읽고 관련 글로 이동합니다.</li>
               <li>3. 무료 진단으로 현재 병목 구간을 확인합니다.</li>
@@ -375,46 +386,50 @@ function buildBlogHub(posts) {
         </div>
       </section>
 
-      <section class="mx-auto max-w-6xl px-4 py-16">
-        <div class="flex items-end justify-between gap-4">
+      <section class="section">
+        <div class="container">
           <div>
-            <h2 class="text-3xl font-extrabold text-slate-900">4개 토픽 허브</h2>
-            <p class="mt-2 text-slate-600">검색엔진과 사용자 모두에게 구조가 보이도록, 주요 주제를 허브 페이지로 나눴습니다.</p>
+            <h2 class="section-title">4개 토픽 허브</h2>
+            <p class="section-body">검색엔진과 사용자 모두에게 구조가 보이도록, 주요 주제를 허브 페이지로 나눴습니다.</p>
           </div>
-          <a href="/diagnosis" class="hidden rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white hover:bg-slate-800 sm:inline-flex">진단으로 바로 가기</a>
+          <div class="section-actions">
+            <a href="/diagnosis" class="btn btn--secondary">진단으로 바로 가기</a>
+          </div>
         </div>
-        <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        <div class="container card-grid card-grid--2" style="margin-top:28px;">
           ${Object.keys(TOPICS).map(key => buildTopicCard(key, posts.filter(post => post.topic === key))).join("")}
         </div>
       </section>
 
-      <section class="bg-slate-100">
-        <div class="mx-auto max-w-6xl px-4 py-16">
-          <h2 class="text-3xl font-extrabold text-slate-900">대표 글 먼저 보기</h2>
-          <p class="mt-2 text-slate-600">검색 유입이 많은 핵심 주제부터 읽으면 사이트 전체를 더 빠르게 활용할 수 있습니다.</p>
-          <div class="mt-8 grid gap-6 lg:grid-cols-3">
+      <section class="section section--alt">
+        <div class="container">
+          <h2 class="section-title">대표 글 먼저 보기</h2>
+          <p class="section-body">검색 유입이 많은 핵심 주제부터 읽으면 사이트 전체를 더 빠르게 활용할 수 있습니다.</p>
+          <div class="card-grid card-grid--3" style="margin-top:28px;">
             ${featured.map(post => buildArticleCard(post)).join("")}
           </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-6xl px-4 py-16">
-        <h2 class="text-3xl font-extrabold text-slate-900">최신 글</h2>
-        <p class="mt-2 text-slate-600">최근 업데이트된 글부터 따라가며 검색 주제와 연결된 문서를 더 깊게 읽을 수 있습니다.</p>
-        <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <section class="section">
+        <div class="container">
+        <h2 class="section-title">최신 글</h2>
+        <p class="section-body">최근 업데이트된 글부터 따라가며 검색 주제와 연결된 문서를 더 깊게 읽을 수 있습니다.</p>
+        <div class="card-grid card-grid--2" style="margin-top:28px;">
           ${latest.map(post => buildArticleCard(post, true)).join("")}
+        </div>
         </div>
       </section>
 
-      <section class="bg-blue-50">
-        <div class="mx-auto max-w-6xl px-4 py-16">
-          <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-blue-100">
-            <div class="text-sm font-semibold text-blue-700">다음 단계</div>
-            <h2 class="mt-3 text-3xl font-extrabold text-slate-900">글을 읽었다면, 이제 현재 취업 준비 상태를 확인할 차례입니다</h2>
-            <p class="mt-3 max-w-3xl text-slate-700">당글의 목표는 글만 읽고 끝나는 사이트가 아니라, 검색 유입을 무료 진단과 다음 행동으로 이어주는 것입니다. 어떤 글부터 봐야 할지 모르겠다면 진단이 가장 빠른 출발점입니다.</p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="/diagnosis" class="rounded-full bg-blue-700 px-5 py-3 font-bold text-white hover:bg-blue-800">무료 진단 받기</a>
-              <a href="/#ebook" class="rounded-full bg-slate-100 px-5 py-3 font-bold text-slate-900 hover:bg-slate-200">가이드북 보기</a>
+      <section class="section section--alt">
+        <div class="container">
+          <div class="cta-panel cta-panel--accent fade-up">
+            <div class="card-label">다음 단계</div>
+            <h2 class="section-title" style="margin-top:14px;">글을 읽었다면, 이제 현재 취업 준비 상태를 확인할 차례입니다</h2>
+            <p class="section-body">당글의 목표는 글만 읽고 끝나는 사이트가 아니라, 검색 유입을 무료 진단과 다음 행동으로 이어주는 것입니다. 어떤 글부터 봐야 할지 모르겠다면 진단이 가장 빠른 출발점입니다.</p>
+            <div class="section-actions">
+              <a href="/diagnosis" class="btn btn--primary">무료 진단 받기</a>
+              <a href="/#ebook" class="btn btn--secondary">가이드북 보기</a>
             </div>
           </div>
         </div>
@@ -445,53 +460,55 @@ function buildTopicHub(topicKey, posts) {
     ogUrl: `${BASE_URL}${topicRoute(topicKey)}`,
     schema,
     mainContent: `<main>
-      <section class="bg-gradient-to-br ${topic.color} text-white">
-        <div class="mx-auto max-w-6xl px-4 py-16">
-          <nav class="text-sm text-white/80">
-            <a href="/" class="hover:text-white">홈</a>
-            <span class="mx-2">/</span>
-            <a href="/blog" class="hover:text-white">블로그</a>
-            <span class="mx-2">/</span>
-            <span class="text-white">${topic.title}</span>
+      <section class="hero">
+        <div class="container">
+          <nav class="breadcrumb">
+            <a href="/">홈</a>
+            <span>/</span>
+            <a href="/blog">블로그</a>
+            <span>/</span>
+            <span>${topic.title}</span>
           </nav>
-          <div class="mt-5 max-w-4xl">
-            <div class="inline-flex rounded-full bg-white/15 px-4 py-1 text-sm font-semibold">${topic.title} Topic Hub</div>
-            <h1 class="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl">${topic.heroTitle}</h1>
-            <p class="mt-5 text-lg text-white/90">${topic.description}</p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="/diagnosis" class="rounded-full bg-white px-5 py-3 font-bold text-slate-900 hover:bg-slate-100">무료 진단 받기</a>
-              <a href="/blog" class="rounded-full border border-white/30 px-5 py-3 font-bold text-white hover:bg-white/10">블로그 허브 보기</a>
+          <div style="max-width:780px;margin-top:20px;">
+            <div class="eyebrow">${topic.title} Topic Hub</div>
+            <h1 class="hero__title">${topic.heroTitle}</h1>
+            <p class="hero__body">${topic.description}</p>
+            <div class="hero__actions">
+              <a href="/diagnosis" class="btn btn--primary">무료 진단 받기</a>
+              <a href="/blog" class="btn btn--secondary">블로그 허브 보기</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="mx-auto grid max-w-6xl gap-8 px-4 py-16 lg:grid-cols-[0.7fr_1.3fr]">
-        <aside class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-          <h2 class="text-2xl font-extrabold text-slate-900">초보자용 빠른 가이드</h2>
-          <ul class="mt-4 space-y-3 text-slate-700">
+      <section class="section section--alt">
+        <div class="container split">
+        <aside class="card fade-up">
+          <h2 class="card-title" style="margin-top:0;">초보자용 빠른 가이드</h2>
+          <ul class="plain-list" style="margin-top:18px;">
             ${topic.beginnerGuide.map(item => `<li>• ${escapeHtml(item)}</li>`).join("")}
           </ul>
-          <div class="mt-8 rounded-2xl bg-slate-900 p-5 text-white">
-            <div class="text-sm font-semibold text-slate-300">추천 다음 행동</div>
-            <h3 class="mt-2 text-xl font-extrabold">${topic.ctaTitle}</h3>
-            <p class="mt-3 text-sm text-slate-200">${topic.ctaText}</p>
-            <a href="/diagnosis" class="mt-5 inline-flex rounded-full bg-white px-4 py-2 font-bold text-slate-900 hover:bg-slate-100">무료 진단으로 이동</a>
+          <div class="article-cta" style="background:var(--accent-soft);margin-top:28px;">
+            <div class="card-label">추천 다음 행동</div>
+            <h3 class="card-title">${topic.ctaTitle}</h3>
+            <p class="card-text">${topic.ctaText}</p>
+            <div style="margin-top:20px;"><a href="/diagnosis" class="btn btn--primary">무료 진단으로 이동</a></div>
           </div>
         </aside>
 
         <div>
-          <h2 class="text-3xl font-extrabold text-slate-900">이 주제에서 먼저 읽을 글</h2>
-          <p class="mt-2 text-slate-600">토픽 허브에서 대표 글부터 읽고, 관련 글로 확장되도록 내부 링크 흐름을 구성했습니다.</p>
-          <div class="mt-8 grid gap-6">
+          <h2 class="section-title">이 주제에서 먼저 읽을 글</h2>
+          <p class="section-body">토픽 허브에서 대표 글부터 읽고, 관련 글로 확장되도록 내부 링크 흐름을 구성했습니다.</p>
+          <div class="card-grid" style="margin-top:28px;">
             ${featured.map(post => buildArticleCard(post)).join("")}
           </div>
-          ${posts.length > 3 ? `<div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 class="text-2xl font-extrabold text-slate-900">더 읽어볼 글</h3>
-            <div class="mt-5 grid gap-4 md:grid-cols-2">
+          ${posts.length > 3 ? `<div class="card fade-up" style="margin-top:28px;">
+            <h3 class="card-title" style="margin-top:0;">더 읽어볼 글</h3>
+            <div class="card-grid card-grid--2" style="margin-top:18px;">
               ${posts.slice(3).map(post => buildArticleCard(post, true)).join("")}
             </div>
           </div>` : ""}
+        </div>
         </div>
       </section>
     </main>`
