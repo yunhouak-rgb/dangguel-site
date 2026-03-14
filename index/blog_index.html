@@ -3,33 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>취업 꿀팁 - 당글 블로그</title>
-  <meta name="description" content="자소서 작성법, 면접 준비, 기업 분석 등 취업 전략을 정리한 당글 블로그입니다." />
-  <meta name="keywords" content="자소서 작성법, 면접 준비, 기업 분석, 취업 전략, 취업 블로그, 취준생 팁" />
-  <link rel="canonical" href="https://dangguel.netlify.app/blog_index.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="취업 꿀팁 - 당글 블로그" />
-  <meta property="og:description" content="취업 전략 글 모음" />
-  <meta property="og:url" content="https://dangguel.netlify.app/blog_index.html" />
+  <title>취업 블로그 허브 | 면접, 자소서, 기업 분석, 지원 전략 | 당글</title>
+  <meta name="description" content="면접, 자소서, 기업·직무 분석, 지원 전략을 4개 토픽 허브로 나눠 정리한 당글 블로그 허브입니다. 검색으로 들어와도 다음 글과 진단으로 자연스럽게 이어집니다." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dangguel.netlify.app/blog" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="취업 블로그 허브 | 당글" />
+  <meta property="og:description" content="면접, 자소서, 기업·직무 분석, 지원 전략을 토픽 허브로 정리한 블로그" />
+  <meta property="og:url" content="https://dangguel.netlify.app/blog" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="취업 꿀팁 - 당글 블로그" />
-  <meta name="twitter:description" content="취업 전략 글 모음" />
-
+  <meta name="twitter:title" content="취업 블로그 허브 | 당글" />
+  <meta name="twitter:description" content="면접, 자소서, 기업·직무 분석, 지원 전략을 토픽 허브로 정리한 블로그" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "당글 취업 꿀팁 블로그",
-    "description": "취준생을 위한 실전 취업 전략과 자소서, 면접, 기업 분석 가이드",
-    "url": "https://dangguel.netlify.app/blog_index.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "당글"
-    }
+    "name": "당글 취업 블로그",
+    "description": "면접, 자소서, 기업·직무 분석, 지원 전략을 한 번에 정리하는 취업 블로그 허브",
+    "url": "https://dangguel.netlify.app/blog",
+    "publisher": { "@type": "Organization", "name": "당글" }
   }
   </script>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HK51X34WHJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,140 +31,282 @@
     gtag('js', new Date());
     gtag('config', 'G-HK51X34WHJ');
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Noto Sans KR', sans-serif; }
-  </style>
+  <link rel="stylesheet" href="/styles/site.css" />
 </head>
 <body class="bg-slate-50 text-slate-900">
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
-      <a href="/" class="font-extrabold tracking-tight text-lg">당글</a>
-      <nav class="flex items-center gap-3 text-sm">
-        <a class="px-3 py-2 rounded-lg hover:bg-slate-100" href="/diagnosis.html">무료 진단</a>
-        <a class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200" href="/blog_index.html">취업 꿀팁</a>
-        <a class="px-3 py-2 rounded-lg text-white bg-slate-900 hover:opacity-95" href="/">가이드북 구매</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="/" class="site-logo">당글</a>
+      <nav class="site-nav">
+        <a href="/diagnosis">무료 진단</a>
+        <a href="/blog">블로그</a>
+        <a href="/blog/interview">면접</a>
+        <a href="/blog/cover-letter">자소서</a>
+        <a href="/#ebook" class="nav-cta">가이드북</a>
       </nav>
     </div>
   </header>
+  <main>
+      <section class="hero">
+        <div class="container hero__grid">
+          <div>
+            <div class="eyebrow">검색 유입을 진단과 다음 행동으로 연결하는 취업 허브</div>
+            <h1 class="hero__title">취준생이 헤매지 않도록,<br />주제별로 정리한 취업 블로그</h1>
+            <p class="hero__body">검색으로 들어온 한 글에서 끝나지 않도록, 면접·자소서·기업 분석·지원 전략을 각각 허브로 묶었습니다. 글을 읽고 바로 무료 진단으로 현재 위치를 확인할 수 있게 설계했습니다.</p>
+            <div class="hero__actions">
+              <a href="/diagnosis" class="btn btn--primary">무료 진단 받기</a>
+              <a href="/#ebook" class="btn btn--secondary">가이드북 보기</a>
+            </div>
+          </div>
+          <div class="hero-card fade-up">
+            <div class="card-label">블로그 이용 가이드</div>
+            <ol style="margin:18px 0 0;padding-left:18px;color:var(--text-secondary);font-size:0.98rem;">
+              <li>1. 먼저 필요한 토픽 허브를 선택합니다.</li>
+              <li>2. 대표 글부터 읽고 관련 글로 이동합니다.</li>
+              <li>3. 무료 진단으로 현재 병목 구간을 확인합니다.</li>
+              <li>4. 필요하면 가이드북으로 다음 단계를 이어갑니다.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
 
-  <main class="mx-auto max-w-5xl px-4 py-10">
-    <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-      취업 꿀팁
-    </h1>
-    <p class="mt-3 text-slate-700">
-      글을 올리면 목록과 사이트맵이 자동으로 갱신됩니다.
-    </p>
+      <section class="section">
+        <div class="container">
+          <div>
+            <h2 class="section-title">4개 토픽 허브</h2>
+            <p class="section-body">검색엔진과 사용자 모두에게 구조가 보이도록, 주요 주제를 허브 페이지로 나눴습니다.</p>
+          </div>
+          <div class="section-actions">
+            <a href="/diagnosis" class="btn btn--secondary">진단으로 바로 가기</a>
+          </div>
+        </div>
+        <div class="container card-grid card-grid--2" style="margin-top:28px;">
+          <article class="card fade-up">
+    <div class="card-label">면접</div>
+    <h3 class="card-title">면접 준비가 막막할 때 먼저 봐야 할 글</h3>
+    <p class="card-text">1분 자기소개, 마지막 한마디, 실무진·임원진 대응까지 면접 합격 확률을 높이는 핵심 글을 모았습니다.</p>
+    <ul class="plain-list" style="margin-top:18px;font-size:0.95rem;">
+      <li>• <a href="/blog/interview-strategy" class="hover:text-slate-900 hover:underline">면접관의 마음을 사로잡는 면접 전략</a></li><li>• <a href="/blog/interview-1minute-self-introduction-examples" class="hover:text-slate-900 hover:underline">면접 1분 자기소개 예시 20개 합격 구조 완전 가이드</a></li><li>• <a href="/blog/interview-final-comment-examples" class="hover:text-slate-900 hover:underline">면접 마지막 한마디 예시 10개</a></li>
+    </ul>
+    <div style="margin-top:22px;"><a href="/blog/interview" class="btn btn--secondary">허브 보기</a></div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서</div>
+    <h3 class="card-title">자소서와 자기소개서를 더 설득력 있게 만드는 글</h3>
+    <p class="card-text">지원동기, 자소서 구조, 경험 정리, 직무별 자기소개서 예시까지 한 번에 연결해서 볼 수 있도록 묶었습니다.</p>
+    <ul class="plain-list" style="margin-top:18px;font-size:0.95rem;">
+      <li>• <a href="/blog/cover-letter-motivation-examples" class="hover:text-slate-900 hover:underline">자소서 지원동기 예시 10개 (직무별 합격 구조)</a></li><li>• <a href="/blog/cover-letter-structure-3-steps" class="hover:text-slate-900 hover:underline">서류 탈락 줄이는 자소서 구조 3단계</a></li><li>• <a href="/blog/experience-story-structuring" class="hover:text-slate-900 hover:underline">평범한 경험도 차별화할 수 있다?</a></li>
+    </ul>
+    <div style="margin-top:22px;"><a href="/blog/cover-letter" class="btn btn--secondary">허브 보기</a></div>
+  </article><article class="card fade-up">
+    <div class="card-label">기업·직무 분석</div>
+    <h3 class="card-title">기업 분석을 정보 나열이 아니라 전략으로 바꾸는 글</h3>
+    <p class="card-text">기업 조사, 직무 이해, 지원 동기 연결을 더 깊게 만들고 싶은 사람을 위한 핵심 글을 정리했습니다.</p>
+    <ul class="plain-list" style="margin-top:18px;font-size:0.95rem;">
+      <li>• <a href="/blog/company-analysis-framework" class="hover:text-slate-900 hover:underline">홈페이지 복사는 이제 그만</a></li>
+    </ul>
+    <div style="margin-top:22px;"><a href="/blog/company-analysis" class="btn btn--secondary">허브 보기</a></div>
+  </article><article class="card fade-up">
+    <div class="card-label">지원 전략</div>
+    <h3 class="card-title">지원 범위와 취업 흐름을 정리해주는 글</h3>
+    <p class="card-text">무작정 지원하는 단계에서 벗어나, 어떤 회사에 어떤 기준으로 지원할지 정리하게 돕는 전략 글을 모았습니다.</p>
+    <ul class="plain-list" style="margin-top:18px;font-size:0.95rem;">
+      <li>• <a href="/blog/job-search-scope-strategy" class="hover:text-slate-900 hover:underline">지원 범위를 잡으면 지원이 쉬워진다</a></li>
+    </ul>
+    <div style="margin-top:22px;"><a href="/blog/job-search-strategy" class="btn btn--secondary">허브 보기</a></div>
+  </article>
+        </div>
+      </section>
 
-    <section class="mt-8 grid gap-4 sm:grid-cols-2">
-      
-    <a href="/blog_post_company.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">홈페이지 복사는 이제 그만</div>
-      <div class="mt-2 text-slate-700">기업 분석 방법 완전 정복!</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_coverletter_support_motivation_examples.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">자소서 지원동기 예시 10개 (직무별 합격 구조)</div>
-      <div class="mt-2 text-slate-700">자소서 지원동기 예시 10개를 직무별로 정리했습니다. 바로 활용 가능한 구조와 문장 템플릿까지 제공합니다.</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_experience.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">평범한 경험도 차별화할 수 있다?</div>
-      <div class="mt-2 text-slate-700">특별한 경험이 없다고요? 아닙니다. 경험 쪼개기 방법으로 평범한 아르바이트, 동아리 활동도 차별화된 스토리로 만드는 법. 취업 경험 정리의 핵심 전략.</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_interview.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">면접관의 마음을 사로잡는 면접 전략</div>
-      <div class="mt-2 text-slate-700">1분 자기소개부터 압박면접까지, 실무진·임원진 면접관 유형별 맞춤 대응 전략. 합격률을 높이는 면접 준비법과 주요 질문 완벽 대응 가이드</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_interview_1min_self_intro_examples_master.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">면접 1분 자기소개 예시 20개 합격 구조 완전 가이드</div>
-      <div class="mt-2 text-slate-700">면접 1분 자기소개 예시 20개를 직무별로 정리했습니다. 합격 구조 공식, 신입·경력 차이, 흔한 실수, 연습 방법, FAQ까지 한 번에 정리했습니다.</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_interview_final_comment_examples.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">면접 마지막 한마디 예시 10개</div>
-      <div class="mt-2 text-slate-700">면접 마지막 한마디 예시 10개와 함께, 신입·경력·직무별로 바로 적용할 수 있는 마무리 구조를 정리했습니다. 억지 열정 대신 면접관이 듣고 싶은 마무리 문장을 준비해보세요.</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_nurse_jasoser_motivation.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">간호사 자소서 지원동기 쓰는법 (대학병원, 종합병원, 전문병원 예시)</div>
-      <div class="mt-2 text-slate-700">간호사 자기소개서 지원동기 작성법. 대학병원, 종합병원, 전문병원별 차별화 전략과 합격 예시. 신규 간호사부터 경력직까지 실전 가이드</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_resume_structure.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">서류 탈락 줄이는 자소서 구조 3단계</div>
-      <div class="mt-2 text-slate-700">자소서가 자꾸 탈락한다면 구조부터 점검해야 합니다. 바로 적용 가능한 3단계 구조를 정리했습니다.</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_secretary_jasoser_motivation.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">비서 자소서 지원동기와 입사 후 포부 쓰는법</div>
-      <div class="mt-2 text-slate-700">비서 자기소개서 지원동기와 입사 후 포부 작성법. 대기업 비서실, 외국계 기업, 중소기업 임원 비서별 차별화 전략과 합격 예시. 신입 비서부터 경력직까지 실전 가이드</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_support.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">지원 범위를 잡으면 지원이 쉬워진다</div>
-      <div class="mt-2 text-slate-700">지원할 회사가 너무 많아 막막하다면? 직무·산업·회사 단계 3축으로 ‘면’을 만들고, 회사 리스트 20개를 30분 안에 설계하는 방법을 소개합니다.</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-
-    <a href="/blog_post_teacher_jasoser_motivation.html" class="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <div class="text-sm text-slate-500">2026-03-14</div>
-      <div class="mt-2 text-xl font-extrabold text-slate-900">보육교사 자소서 지원동기와 입사 후 포부 쓰는법</div>
-      <div class="mt-2 text-slate-700">보육교사 자기소개서 지원동기와 입사 후 포부 작성법. 국공립, 민간, 직장, 가정 어린이집별 차별화 전략과 합격 예시. 신규 보육교사부터 경력직까지 실전 가이드</div>
-      <div class="mt-4 font-bold text-blue-700">자세히 보기 →</div>
-    </a>
-  
-    </section>
-
-    <div class="mt-10 rounded-2xl p-6 bg-white border border-slate-200">
-      <div class="font-extrabold text-lg">이제 막연한 준비는 그만</div>
-      <div class="mt-2 text-slate-700">무료 진단으로 현재 상태부터 확인해보세요.</div>
-      <div class="mt-4 flex gap-3 flex-col sm:flex-row">
-        <a class="px-4 py-3 rounded-xl bg-slate-900 text-white font-bold text-center" href="/diagnosis.html">무료 진단 받기</a>
-        <a class="px-4 py-3 rounded-xl bg-slate-100 font-bold text-center" href="/">가이드북 보기</a>
-      </div>
+      <section class="section section--alt">
+        <div class="container">
+          <h2 class="section-title">대표 글 먼저 보기</h2>
+          <p class="section-body">검색 유입이 많은 핵심 주제부터 읽으면 사이트 전체를 더 빠르게 활용할 수 있습니다.</p>
+          <div class="card-grid card-grid--3" style="margin-top:28px;">
+            <article class="card fade-up">
+    <div class="card-label">면접 · 대표 가이드</div>
+    <h3 class="card-title">면접관의 마음을 사로잡는 면접 전략</h3>
+    <p class="card-text">1분 자기소개부터 예상 질문, 마지막 한마디까지. 면접관이 왜 이 지원자를 뽑고 싶은지 느끼게 만드는 면접 준비 전략을 정리했습니다.</p>
+    <div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">2026-03-14 · 6분</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/interview-strategy" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
     </div>
-  </main>
+  </article><article class="card fade-up">
+    <div class="card-label">면접 · 면접 예시</div>
+    <h3 class="card-title">면접 1분 자기소개 예시 20개 합격 구조 완전 가이드</h3>
+    <p class="card-text">면접 1분 자기소개 예시 20개를 직무별로 정리했습니다. 합격 구조 공식, 신입·경력 차이, 흔한 실수, 연습 방법, FAQ까지 한 번에 정리했습니다.</p>
+    <div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">2026-03-14 · 8분</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/interview-1minute-self-introduction-examples" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 지원동기</div>
+    <h3 class="card-title">자소서 지원동기 예시 10개 (직무별 합격 구조)</h3>
+    <p class="card-text">자소서 지원동기 예시 10개를 직무별로 정리했습니다. 바로 활용 가능한 구조와 문장 템플릿까지 제공합니다.</p>
+    <div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">2026-03-14 · 7분</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/cover-letter-motivation-examples" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 기본기</div>
+    <h3 class="card-title">서류 탈락 줄이는 자소서 구조 3단계</h3>
+    <p class="card-text">자소서가 자꾸 탈락한다면 구조부터 점검해야 합니다. 바로 적용 가능한 3단계 구조를 정리했습니다.</p>
+    <div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">2026-03-14 · 6분</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/cover-letter-structure-3-steps" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 경험 정리</div>
+    <h3 class="card-title">평범한 경험도 차별화할 수 있다?</h3>
+    <p class="card-text">특별한 경험이 없다고요? 아닙니다. 경험 쪼개기 방법으로 평범한 아르바이트, 동아리 활동도 차별화된 스토리로 만드는 법. 취업 경험 정리의 핵심 전략.</p>
+    <div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">2026-03-14 · 7분</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/experience-story-structuring" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">기업·직무 분석 · 기업 분석</div>
+    <h3 class="card-title">홈페이지 복사는 이제 그만</h3>
+    <p class="card-text">기업 분석 방법 완전 정복!</p>
+    <div style="margin-top:16px;color:var(--text-muted);font-size:0.92rem;">2026-03-14 · 6분</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/company-analysis-framework" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article>
+          </div>
+        </div>
+      </section>
 
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-slate-600">
-      © 2025 당글. Contact: yuncontest@naver.com
+      <section class="section">
+        <div class="container">
+        <h2 class="section-title">최신 글</h2>
+        <p class="section-body">최근 업데이트된 글부터 따라가며 검색 주제와 연결된 문서를 더 깊게 읽을 수 있습니다.</p>
+        <div class="card-grid card-grid--2" style="margin-top:28px;">
+          <article class="card fade-up">
+    <div class="card-label">면접 · 대표 가이드</div>
+    <h3 class="card-title">면접관의 마음을 사로잡는 면접 전략</h3>
+    <p class="card-text">1분 자기소개부터 예상 질문, 마지막 한마디까지. 면접관이 왜 이 지원자를 뽑고 싶은지 느끼게 만드는 면접 준비 전략을 정리했습니다.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/interview-strategy" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">면접 · 면접 예시</div>
+    <h3 class="card-title">면접 1분 자기소개 예시 20개 합격 구조 완전 가이드</h3>
+    <p class="card-text">면접 1분 자기소개 예시 20개를 직무별로 정리했습니다. 합격 구조 공식, 신입·경력 차이, 흔한 실수, 연습 방법, FAQ까지 한 번에 정리했습니다.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/interview-1minute-self-introduction-examples" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">면접 · 면접 마무리</div>
+    <h3 class="card-title">면접 마지막 한마디 예시 10개</h3>
+    <p class="card-text">면접 마지막 한마디 예시 10개와 함께, 신입·경력·직무별로 바로 적용할 수 있는 마무리 구조를 정리했습니다. 억지 열정 대신 면접관이 듣고 싶은 마무리 문장을 준비해보세요.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/interview-final-comment-examples" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 지원동기</div>
+    <h3 class="card-title">자소서 지원동기 예시 10개 (직무별 합격 구조)</h3>
+    <p class="card-text">자소서 지원동기 예시 10개를 직무별로 정리했습니다. 바로 활용 가능한 구조와 문장 템플릿까지 제공합니다.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/cover-letter-motivation-examples" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 기본기</div>
+    <h3 class="card-title">서류 탈락 줄이는 자소서 구조 3단계</h3>
+    <p class="card-text">자소서가 자꾸 탈락한다면 구조부터 점검해야 합니다. 바로 적용 가능한 3단계 구조를 정리했습니다.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/cover-letter-structure-3-steps" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 경험 정리</div>
+    <h3 class="card-title">평범한 경험도 차별화할 수 있다?</h3>
+    <p class="card-text">특별한 경험이 없다고요? 아닙니다. 경험 쪼개기 방법으로 평범한 아르바이트, 동아리 활동도 차별화된 스토리로 만드는 법. 취업 경험 정리의 핵심 전략.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/experience-story-structuring" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 직무별 예시</div>
+    <h3 class="card-title">간호사 자소서 지원동기 쓰는법 (대학병원, 종합병원, 전문병원 예시)</h3>
+    <p class="card-text">간호사 자기소개서 지원동기 작성법. 대학병원, 종합병원, 전문병원별 차별화 전략과 합격 예시. 신규 간호사부터 경력직까지 실전 가이드</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/nurse-cover-letter-motivation" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article><article class="card fade-up">
+    <div class="card-label">자소서 · 직무별 예시</div>
+    <h3 class="card-title">비서 자소서 지원동기와 입사 후 포부 쓰는법</h3>
+    <p class="card-text">비서 자기소개서 지원동기와 입사 후 포부 작성법. 대기업 비서실, 외국계 기업, 중소기업 임원 비서별 차별화 전략과 합격 예시. 신입 비서부터 경력직까지 실전 가이드</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;">
+      <a href="/blog/secretary-cover-letter-motivation" class="text-link">글 읽기</a>
+      <a href="/diagnosis" style="font-size:0.95rem;font-weight:700;color:var(--text-secondary);">진단으로 현재 위치 보기</a>
+    </div>
+  </article>
+        </div>
+        </div>
+      </section>
+
+      <section class="section section--alt">
+        <div class="container">
+          <div class="cta-panel cta-panel--accent fade-up">
+            <div class="card-label">다음 단계</div>
+            <h2 class="section-title" style="margin-top:14px;">글을 읽었다면, 이제 현재 취업 준비 상태를 확인할 차례입니다</h2>
+            <p class="section-body">당글의 목표는 글만 읽고 끝나는 사이트가 아니라, 검색 유입을 무료 진단과 다음 행동으로 이어주는 것입니다. 어떤 글부터 봐야 할지 모르겠다면 진단이 가장 빠른 출발점입니다.</p>
+            <div class="section-actions">
+              <a href="/diagnosis" class="btn btn--primary">무료 진단 받기</a>
+              <a href="/#ebook" class="btn btn--secondary">가이드북 보기</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  <footer class="footer">
+    <div class="container" style="padding-top:40px;padding-bottom:40px;">
+      <div class="footer__grid">
+        <a href="/" class="hover:text-slate-900">홈</a>
+        <a href="/blog" class="hover:text-slate-900">블로그 허브</a>
+        <a href="/blog/interview" class="hover:text-slate-900">면접</a>
+        <a href="/blog/cover-letter" class="hover:text-slate-900">자소서</a>
+        <a href="/blog/company-analysis" class="hover:text-slate-900">기업·직무 분석</a>
+        <a href="/blog/job-search-strategy" class="hover:text-slate-900">지원 전략</a>
+        <a href="/diagnosis" class="hover:text-slate-900">무료 진단</a>
+      </div>
+      <div style="margin-top:16px;color:var(--text-secondary);font-size:0.95rem;">© 2025 당글. Contact: yuncontest@naver.com</div>
     </div>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const items = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      items.forEach((item) => observer.observe(item));
+    });
+  </script>
 </body>
 </html>
