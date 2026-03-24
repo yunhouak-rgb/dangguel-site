@@ -1,4 +1,5 @@
 /diagnosis                                /diagnosis.html                                     200
+/diagnosis/                               /diagnosis                                          301
 /blog                                     /blog_index.html                                    200
 /blog/                                    /blog_index.html                                    200
 /blog/company-analysis                    /blog_topic_company_analysis.html                200
@@ -19,6 +20,7 @@
 
 /diagnosis.html                           /diagnosis                                          301
 /blog_index.html                          /blog                                               301
+/blog_index/                             /blog                                               301
 /blog/index.html                          /blog                                               301
 /blog/job-search-strategy                 /blog/mind-care                                     301
 /blog_post_company.html                   /blog/company-analysis-framework                    301
