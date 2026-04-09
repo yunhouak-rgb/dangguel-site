@@ -1,1 +1,19 @@
-/blog  /blog_index.html  200
+/diagnosis                  /diagnosis.html                     200
+/blog/interview             /blog-interview.html                200
+/blog/cover-letter          /blog-cover-letter.html             200
+/blog/company-analysis      /blog-company-analysis.html         200
+/blog/mind-care             /blog-mind-care.html                200
+/blog/interview-strategy    /blog-post-interview-strategy.html  200
+/blog/interview-1min-selfintro  /blog-post-interview-1min.html  200
+/blog/interview-final-comment   /blog-post-interview-final.html 200
+/blog/cover-letter-motivation-examples  /blog-post-coverletter-motivation.html  200
+/blog/cover-letter-structure    /blog-post-coverletter-structure.html   200
+/blog/cover-letter-experience   /blog-post-coverletter-experience.html  200
+/blog/nurse-cover-letter        /blog-post-nurse-coverletter.html       200
+/blog/secretary-cover-letter    /blog-post-secretary-coverletter.html   200
+/blog/company-analysis-framework  /blog-post-company-framework.html     200
+/blog/job-analysis              /blog-post-job-analysis.html            200
+/blog/job-search-scope-strategy /blog-post-job-scope.html               200
+/blog/job-search-anxiety        /blog-post-job-anxiety.html             200
+
+/*  /index.html  200

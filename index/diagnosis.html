@@ -1,180 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>무료 진단 | 지금 부족한 준비 영역을 먼저 확인하세요 | 당글</title>
-  <meta name="description" content="무료 진단으로 기업이해, 면접, 자소서, 마음관리 중 어디가 막혀 있는지 먼저 확인하고 다음 글로 이어가세요." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://dangguel.netlify.app/diagnosis" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="무료 진단 | 지금 부족한 준비 영역을 먼저 확인하세요 | 당글" />
-  <meta property="og:description" content="무료 진단으로 현재 준비 상태를 확인하고, 필요한 글과 다음 행동으로 연결됩니다." />
-  <meta property="og:url" content="https://dangguel.netlify.app/diagnosis" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="무료 진단 | 지금 부족한 준비 영역을 먼저 확인하세요 | 당글" />
-  <meta name="twitter:description" content="취업 준비는 많이 보는 것보다 먼저 진단하는 쪽이 빠릅니다." />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "당글 무료 진단",
-    "description": "기업이해, 면접, 자소서, 마음관리 중 현재 병목을 확인하는 무료 진단",
-    "url": "https://dangguel.netlify.app/diagnosis",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "KRW"
-    },
-    "provider": {
-      "@type": "Organization",
-      "name": "당글"
-    }
-  }
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>무료 취업 진단 | 지금 내 준비 상태 확인하기 | 당글</title>
+  <meta name="description" content="면접, 자소서, 기업이해, 마음관리 4가지 영역을 무료로 진단하고 맞춤 콘텐츠를 추천받으세요. 5분 이내, 로그인 불필요." />
+  <link rel="canonical" href="https://dangguel-site.pages.dev/diagnosis" />
+  <meta property="og:title" content="무료 취업 진단 | 당글" />
+  <meta property="og:description" content="지금 내 취업 준비 상태를 5분 만에 진단하세요." />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HK51X34WHJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-HK51X34WHJ");
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HK51X34WHJ');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles/site.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a href="/" class="site-logo">당글</a>
-      <nav class="site-nav">
-        <a href="/diagnosis" class="is-active">무료 진단</a>
-        <a href="/blog/company-analysis">기업이해</a>
-        <a href="/blog/interview">면접</a>
-        <a href="/blog/cover-letter">자소서</a>
-        <a href="/blog/mind-care">마음관리</a>
-        <a href="/#ebook" class="nav-cta">가이드북</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-logo">당<em>글</em></a>
+    <nav class="site-nav">
+      <a href="/diagnosis">무료진단</a>
+      <a href="/blog/interview">면접</a>
+      <a href="/blog/cover-letter">자소서</a>
+      <a href="/blog/company-analysis">기업이해</a>
+      <a href="/blog/mind-care">마음관리</a>
+      <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="nav-book">📘 전자책 26,000원</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="quiz-wrap">
+    <div class="container" style="max-width:600px;">
+      <div class="quiz-progress">
+        <div class="quiz-progress__bar" id="progressBar" style="width:20%"></div>
+      </div>
+
+      <div class="quiz-step active" id="step1">
+        <div class="quiz__q">면접 준비, 지금 어느 단계인가요?</div>
+        <div class="quiz__sub">가장 가까운 상태를 골라주세요</div>
+        <div class="quiz__options">
+          <div class="quiz__option" onclick="select(this,'interview',1)"><span class="quiz__option-num">1</span>아직 시작을 못 했어요</div>
+          <div class="quiz__option" onclick="select(this,'interview',2)"><span class="quiz__option-num">2</span>예상 질문 리스트만 있어요</div>
+          <div class="quiz__option" onclick="select(this,'interview',3)"><span class="quiz__option-num">3</span>답변을 만들고 있는데 자신 없어요</div>
+          <div class="quiz__option" onclick="select(this,'interview',4)"><span class="quiz__option-num">4</span>실전 연습까지 하고 있어요</div>
+        </div>
+        <div class="quiz-nav"><button class="btn btn--primary" onclick="goNext(2,40)">다음</button></div>
+      </div>
+
+      <div class="quiz-step" id="step2">
+        <div class="quiz__q">자소서 완성도는 어느 정도인가요?</div>
+        <div class="quiz__sub">현재 상태를 솔직하게 골라주세요</div>
+        <div class="quiz__options">
+          <div class="quiz__option" onclick="select(this,'coverletter',1)"><span class="quiz__option-num">1</span>아직 초안도 없어요</div>
+          <div class="quiz__option" onclick="select(this,'coverletter',2)"><span class="quiz__option-num">2</span>초안은 있는데 내용이 약해요</div>
+          <div class="quiz__option" onclick="select(this,'coverletter',3)"><span class="quiz__option-num">3</span>완성했지만 차별화가 없어요</div>
+          <div class="quiz__option" onclick="select(this,'coverletter',4)"><span class="quiz__option-num">4</span>여러 회사 맞춤 버전이 있어요</div>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn btn--ghost" onclick="goPrev(1,20)">이전</button>
+          <button class="btn btn--primary" onclick="goNext(3,60)">다음</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" id="step3">
+        <div class="quiz__q">지원하는 회사·직무를 얼마나 파악하고 있나요?</div>
+        <div class="quiz__sub">기업이해 수준을 골라주세요</div>
+        <div class="quiz__options">
+          <div class="quiz__option" onclick="select(this,'company',1)"><span class="quiz__option-num">1</span>회사 이름만 알아요</div>
+          <div class="quiz__option" onclick="select(this,'company',2)"><span class="quiz__option-num">2</span>홈페이지 정도는 봤어요</div>
+          <div class="quiz__option" onclick="select(this,'company',3)"><span class="quiz__option-num">3</span>뉴스와 사업 방향은 파악했어요</div>
+          <div class="quiz__option" onclick="select(this,'company',4)"><span class="quiz__option-num">4</span>직무 연결까지 정리해뒀어요</div>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn btn--ghost" onclick="goPrev(2,40)">이전</button>
+          <button class="btn btn--primary" onclick="goNext(4,80)">다음</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" id="step4">
+        <div class="quiz__q">요즘 취업 준비 중 마음 상태는 어떤가요?</div>
+        <div class="quiz__sub">솔직하게 골라주세요</div>
+        <div class="quiz__options">
+          <div class="quiz__option" onclick="select(this,'mind',1)"><span class="quiz__option-num">1</span>불안해서 집중이 안 돼요</div>
+          <div class="quiz__option" onclick="select(this,'mind',2)"><span class="quiz__option-num">2</span>의욕이 들쑥날쑥해요</div>
+          <div class="quiz__option" onclick="select(this,'mind',3)"><span class="quiz__option-num">3</span>나름 루틴을 유지하고 있어요</div>
+          <div class="quiz__option" onclick="select(this,'mind',4)"><span class="quiz__option-num">4</span>꾸준히 잘 진행되고 있어요</div>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn btn--ghost" onclick="goPrev(3,60)">이전</button>
+          <button class="btn btn--primary" onclick="showResult()">결과 보기</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" id="result">
+        <div class="quiz-result">
+          <div class="result-badge" id="resultBadge"></div>
+          <h2 style="font-size:1.8rem;font-weight:900;margin-bottom:10px;letter-spacing:-0.02em;" id="resultTitle"></h2>
+          <p style="font-size:0.95rem;color:var(--text-sub);max-width:440px;margin:0 auto 28px;line-height:1.8;" id="resultDesc"></p>
+          <div class="result-items" id="resultItems"></div>
+          <div id="resultLinks" style="display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div><div class="footer__brand">당글</div><div class="footer__tagline">취업 준비의 흐름을 잡아주는 콘텐츠 사이트</div></div>
+      <nav class="footer__nav">
+        <a href="/">홈</a><a href="/diagnosis">무료진단</a><a href="/blog/interview">면접</a><a href="/blog/cover-letter">자소서</a><a href="/blog/company-analysis">기업이해</a><a href="/blog/mind-care">마음관리</a>
       </nav>
     </div>
-  </header>
+    <div class="footer__copy">© 2026 당글 · Contact: yuncontest@naver.com</div>
+  </div>
+</footer>
 
-  <main>
-    <section class="hero">
-      <div class="container hero__grid">
-        <div>
-          <div class="eyebrow">Diagnosis First</div>
-          <h1 class="hero__title">취업 준비는<br />먼저 진단하면 훨씬 빨라집니다</h1>
-          <p class="hero__body">
-            무료 진단으로 지금 어디가 비어 있는지 먼저 확인해 보세요.
-            기업이해, 면접, 자소서, 마음관리 중 지금 가장 필요한 다음 행동을 선명하게 잡을 수 있습니다.
-          </p>
-          <div class="hero__actions">
-            <a href="/quiz.html" class="btn btn--primary">무료 진단 시작</a>
-            <a href="/blog" class="btn btn--secondary">글 읽기</a>
-            <a href="/#ebook" class="text-link text-link--muted">가이드북 보기</a>
-          </div>
-          <div class="hero__meta">
-            <span>무료</span>
-            <span>바로 시작 가능</span>
-            <span>관련 글로 바로 연결</span>
-          </div>
-        </div>
-        <aside class="hero-card fade-up">
-          <div class="card-label">무엇을 확인하나요</div>
-          <ul class="plain-list" style="margin-top:18px;">
-            <li>기업이해가 부족한지</li>
-            <li>면접 답변 흐름이 약한지</li>
-            <li>자소서 구조가 흔들리는지</li>
-            <li>마음관리와 준비 리듬이 무너졌는지</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section section--alt">
-      <div class="container">
-        <div class="split">
-          <div class="card fade-up">
-            <div class="card-label">이런 분께 맞습니다</div>
-            <div class="stack" style="margin-top:18px;">
-              <div class="surface-note">무엇부터 손대야 할지 모르겠을 때</div>
-              <div class="surface-note">글은 많이 읽었는데 준비가 정리되지 않을 때</div>
-              <div class="surface-note">지원 방향과 답변 흐름이 계속 흔들릴 때</div>
-              <div class="surface-note">불안 때문에 준비 리듬이 자주 끊길 때</div>
-            </div>
-          </div>
-          <div class="card fade-up">
-            <div class="card-label">진단 다음 흐름</div>
-            <h2 class="card-title">결과에서 끝나지 않고 다음 글로 이어집니다</h2>
-            <p class="card-text">당글의 진단은 점수만 보여주는 도구가 아니라, 지금 필요한 허브와 글을 찾는 출발점입니다.</p>
-            <div class="hero__actions">
-              <a href="/quiz.html" class="btn btn--primary">진단 시작</a>
-              <a href="/blog" class="btn btn--secondary">블로그 보기</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">진단 전 먼저 읽어도 좋은 글</h2>
-        <p class="section-body">가볍게 읽고 감을 잡고 싶다면 대표 글부터 먼저 봐도 괜찮습니다.</p>
-        <div class="card-grid card-grid--3" style="margin-top:28px;">
-          <article class="card fade-up">
-            <div class="card-label">면접</div>
-            <h3 class="card-title">면접 전략</h3>
-            <p class="card-text">면접관 관점에서 답변 흐름을 정리하는 대표 가이드입니다.</p>
-            <div class="card-action-row"><a href="/blog/interview-strategy" class="text-link">글 읽기</a></div>
-          </article>
-          <article class="card fade-up">
-            <div class="card-label">자소서</div>
-            <h3 class="card-title">자소서 구조 3단계</h3>
-            <p class="card-text">결론, 근거, 회사 연결 흐름으로 자소서를 정리하는 기본 글입니다.</p>
-            <div class="card-action-row"><a href="/blog/cover-letter-structure-3-steps" class="text-link">글 읽기</a></div>
-          </article>
-          <article class="card fade-up">
-            <div class="card-label">마음관리</div>
-            <h3 class="card-title">지원 범위를 좁히면 준비가 쉬워집니다</h3>
-            <p class="card-text">흔들리는 지원 기준을 줄이고 준비 리듬을 다시 세우는 방법을 다룹니다.</p>
-            <div class="card-action-row"><a href="/blog/job-search-scope-strategy" class="text-link">글 읽기</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container" style="padding-top:40px;padding-bottom:40px;">
-      <div class="footer__grid">
-        <a href="/">홈</a>
-        <a href="/diagnosis">무료 진단</a>
-        <a href="/blog/company-analysis">기업이해</a>
-        <a href="/blog/interview">면접</a>
-        <a href="/blog/cover-letter">자소서</a>
-        <a href="/blog/mind-care">마음관리</a>
-        <a href="/#ebook">가이드북</a>
-      </div>
-      <div style="margin-top:16px;color:var(--text-secondary);font-size:0.95rem;">© 2026 당글. Contact: yuncontest@naver.com</div>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const items = document.querySelectorAll(".fade-up");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      items.forEach((item) => observer.observe(item));
-    });
-  </script>
+<script>
+const scores={interview:0,coverletter:0,company:0,mind:0};
+function select(el,key,val){
+  el.closest('.quiz__options').querySelectorAll('.quiz__option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected'); scores[key]=val;
+}
+function goNext(n,pct){document.querySelectorAll('.quiz-step').forEach(s=>s.classList.remove('active'));document.getElementById('step'+n).classList.add('active');document.getElementById('progressBar').style.width=pct+'%';}
+function goPrev(n,pct){document.querySelectorAll('.quiz-step').forEach(s=>s.classList.remove('active'));document.getElementById('step'+n).classList.add('active');document.getElementById('progressBar').style.width=pct+'%';}
+function showResult(){
+  document.getElementById('progressBar').style.width='100%';
+  document.querySelectorAll('.quiz-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('result').classList.add('active');
+  const avg=(scores.interview+scores.coverletter+scores.company+scores.mind)/4;
+  const labels={interview:'면접',coverletter:'자소서',company:'기업이해',mind:'마음관리'};
+  const blogLinks={interview:'/blog/interview-strategy',coverletter:'/blog/cover-letter-motivation-examples',company:'/blog/company-analysis',mind:'/blog/job-search-scope-strategy'};
+  let badge,bgColor,title,desc;
+  if(avg<2){badge='지금 당장 전략이 필요해요';bgColor='#fee2e2';title='전략 없이는 계속 불합격입니다';desc='4가지 영역 모두 준비가 부족한 상태예요. 혼자 해결하려 하지 말고 검증된 전략부터 익히세요.';}
+  else if(avg<3){badge='방향을 잡아야 할 때예요';bgColor='#fef3c7';title='열심히 하는데 결과가 없다면';desc='노력은 하고 있지만 전략이 빠져 있어요. 합격하는 사람들이 쓰는 방법을 배워야 할 때입니다.';}
+  else{badge='거의 다 왔어요';bgColor='#dcfce7';title='마지막 완성도가 합격을 가릅니다';desc='전반적으로 잘 준비되어 있어요. 이제 각 영역의 완성도를 더 높이면 충분합니다.';}
+  const badge_el=document.getElementById('resultBadge');
+  badge_el.textContent=badge; badge_el.style.background=bgColor; badge_el.style.color='#333'; badge_el.style.padding='5px 16px'; badge_el.style.borderRadius='100px'; badge_el.style.fontSize='0.82rem'; badge_el.style.fontWeight='700';
+  document.getElementById('resultTitle').textContent=title;
+  document.getElementById('resultDesc').textContent=desc;
+  const colors={1:'#ef4444',2:'#f59e0b',3:'#3b82f6',4:'#22c55e'};
+  const vals=['미시작','초반 단계','진행 중','완성 단계'];
+  document.getElementById('resultItems').innerHTML=Object.entries(labels).map(([k,l])=>`<div class="result-item"><div class="result-item__label">${l}</div><div class="result-item__val">${vals[scores[k]-1]||'미응답'}</div><div class="result-item__bar"><div class="result-item__fill" style="width:${(scores[k]/4)*100}%;background:${colors[scores[k]]||'#ccc'}"></div></div></div>`).join('');
+  const weak=Object.entries(scores).sort((a,b)=>a[1]-b[1])[0];
+  document.getElementById('resultLinks').innerHTML=`
+    <a href="${blogLinks[weak[0]]}" class="btn btn--primary" style="justify-content:center;">가장 약한 ${labels[weak[0]]} 글 보기</a>
+    <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="btn btn--gold" style="justify-content:center;">📘 전략 전자책으로 완성하기 · 26,000원</a>
+  `;
+}
+</script>
 </body>
 </html>

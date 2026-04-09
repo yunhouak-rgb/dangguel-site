@@ -1,2 +1,9 @@
 /*
   Content-Type: text/html; charset=UTF-8
+  X-Content-Type-Options: nosniff
+
+/*.css
+  Content-Type: text/css; charset=UTF-8
+
+/*.js
+  Content-Type: text/javascript; charset=UTF-8
