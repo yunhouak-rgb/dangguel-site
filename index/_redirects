@@ -1,7 +1,1 @@
-/diagnosis      /diagnosis.html     200
-/blog           /blog_index.html    200
-/blog/interview /blog_topic_interview.html  200
-/blog/cover-letter  /blog_topic_cover_letter.html   200
-/blog/company-analysis  /blog_topic_company_analysis.html   200
-
-/* /index.html  200
+/blog  /blog_index.html  200
