@@ -1,3 +1,4 @@
 [build]
-  command = "npm --prefix index run build"
+  command = "npm run build"
   publish = "index"
+  base = "index"
