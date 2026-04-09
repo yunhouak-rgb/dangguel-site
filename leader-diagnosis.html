@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리더십 스타일 진단</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f3;--bg3:#eeece8;
+  --text:#1a1a1a;--text2:#666;--text3:#999;
+  --border:#e0ddd8;--border2:#ccc;
+  --radius:10px;--radius-lg:14px;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;
+  background:var(--bg2);color:var(--text);min-height:100vh;padding:0}
+
+.app{max-width:640px;margin:0 auto;padding:20px 16px 60px}
+
+.screen{display:none}
+.screen.on{display:block}
+
+/* ── TOP BAR ── */
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.q-count{font-size:13px;color:var(--text2);font-weight:500}
+.axis-pill{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.3px}
+
+/* ── PROGRESS ── */
+.prog-wrap{margin-bottom:28px}
+.prog-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;border-radius:2px;transition:width 0.35s ease}
+
+/* ── SITUATION CARD ── */
+.sit-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:22px;margin-bottom:28px}
+.sit-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--text3);
+  text-transform:uppercase;margin-bottom:10px}
+.sit-text{font-size:15px;line-height:1.75;color:var(--text)}
+
+/* ── POLES ── */
+.poles-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.pole{border:1px solid var(--border);border-radius:var(--radius);padding:13px 15px;
+  transition:all 0.2s;background:var(--bg)}
+.pole.active{border-width:2px}
+.pole-tag{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;
+  margin-bottom:6px;color:var(--text3)}
+.pole.r .pole-tag{text-align:right}
+.pole-text{font-size:12px;line-height:1.55;color:var(--text)}
+.pole.r .pole-text{text-align:right}
+
+/* ── SLIDER ── */
+.slider-section{padding:0 4px;margin-bottom:12px}
+.slider-prompt{text-align:center;font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.5}
+
+.track-wrap{position:relative;padding:14px 0;cursor:pointer;user-select:none;-webkit-user-select:none}
+.track{height:6px;border-radius:3px;background:var(--border);position:relative}
+.track-fill{height:100%;border-radius:3px;position:absolute;top:0;left:0;pointer-events:none}
+.track-ticks{position:absolute;top:0;left:0;right:0;height:100%;pointer-events:none}
+.tick{position:absolute;top:50%;transform:translate(-50%,-50%);
+  width:2px;height:12px;background:var(--bg2);border-radius:1px}
+
+.handle{
+  position:absolute;top:50%;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--border2);
+  transform:translate(-50%,-50%);
+  cursor:grab;transition:border-color 0.15s,transform 0.1s,box-shadow 0.1s;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.12);
+  will-change:left;
+  z-index:2;
+}
+.handle:active,.handle.drag{cursor:grabbing;transform:translate(-50%,-50%) scale(1.12);
+  box-shadow:0 4px 16px rgba(0,0,0,0.18)}
+.handle-dot{width:12px;height:12px;border-radius:50%;background:var(--border2);transition:background 0.15s}
+.handle.live .handle-dot{background:var(--acolor)}
+.handle.live{border-color:var(--acolor)}
+
+.scale-labels{display:flex;justify-content:space-between;margin-top:10px;padding:0 2px}
+.scale-labels span{font-size:10px;color:var(--text3)}
+
+/* ── VALUE CHIP ── */
+.val-display{text-align:center;height:32px;margin-top:8px;display:flex;align-items:center;justify-content:center}
+.val-chip{font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;transition:all 0.2s}
+.val-no{font-size:12px;color:var(--text3)}
+.val-num{font-size:11px;color:var(--text3);margin-left:6px}
+
+/* ── NAV ── */
+.nav-row{display:flex;gap:8px;align-items:center;margin-top:24px}
+.btn{padding:11px 22px;border-radius:var(--radius);font-size:13px;cursor:pointer;
+  border:1px solid var(--border2);background:var(--bg);color:var(--text);
+  font-family:inherit;font-weight:500;transition:all 0.12s}
+.btn:hover:not(:disabled){background:var(--bg2)}
+.btn:disabled{opacity:0.3;cursor:not-allowed}
+.btn.primary{color:#fff;border:none;font-weight:600}
+.btn.primary:hover:not(:disabled){opacity:0.88}
+.nav-hint{font-size:11px;color:var(--text3);margin-left:auto;transition:opacity 0.3s}
+
+/* ── INTRO ── */
+.intro-wrap{padding:2.5rem 0}
+.intro-title{font-size:24px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.intro-sub{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:2rem}
+.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:2rem}
+.meta-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 8px;text-align:center}
+.meta-val{font-size:22px;font-weight:700;margin-bottom:3px}
+.meta-lbl{font-size:11px;color:var(--text2)}
+.start-btn{padding:14px 32px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;border:none;color:#fff;font-family:inherit;letter-spacing:0.2px;background:#1a1a2e;transition:opacity 0.2s;white-space:nowrap}
+.start-btn:hover{opacity:0.85}
+
+/* ── RESULT ── */
+.result-top{text-align:center;padding:2rem 0 1.5rem}
+.type-circle{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;margin:0 auto 14px;font-size:24px;font-weight:700}
+.type-name{font-size:24px;font-weight:700;margin-bottom:4px}
+.type-meta{font-size:13px;color:var(--text2);margin-bottom:12px}
+.sub-pill{display:inline-block;font-size:11px;font-weight:600;padding:4px 14px;border-radius:20px}
+.divider{height:1px;background:var(--border);margin:0 0 1.5rem}
+
+.sec-lbl{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1.2px;
+  text-transform:uppercase;margin-bottom:10px}
+.section{margin-bottom:1.5rem}
+
+.core-text{font-size:15px;line-height:1.7;border-left:3px solid var(--acolor,#378add);
+  padding-left:14px;color:var(--text)}
+
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.twin-box{background:var(--bg2);border-radius:var(--radius);padding:14px}
+.twin-lbl{font-size:10px;color:var(--text3);margin-bottom:5px;letter-spacing:0.5px}
+.twin-text{font-size:13px;line-height:1.55;color:var(--text)}
+
+.grow-box{padding:13px 16px;border-radius:var(--radius);border-left:3px solid var(--acolor,#378add);
+  background:var(--bg2);font-size:13px;line-height:1.65;color:var(--text)}
+
+.ax-item{margin-bottom:14px}
+.ax-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.ax-name{font-size:13px;color:var(--text)}
+.ax-score{font-size:11px;color:var(--text2)}
+.ax-track{height:8px;background:var(--border);border-radius:4px;position:relative;overflow:visible}
+.ax-fill{height:100%;border-radius:4px;position:absolute;top:0;left:0}
+.ax-dot{width:14px;height:14px;border-radius:50%;position:absolute;top:50%;
+  transform:translate(-50%,-50%);border:2px solid var(--bg)}
+.ax-feet{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-top:4px}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem}
+.tag{font-size:11px;font-weight:500;padding:4px 11px;border-radius:20px}
+
+.idp-list{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.idp-row{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.55}
+.idp-bul{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+
+.bias-warn{border-radius:var(--radius);padding:10px 14px;font-size:12px;line-height:1.5;
+  margin-bottom:1rem;background:#fff8e6;color:#7a5a00;border:1px solid #f0d070}
+
+.action-row{display:flex;gap:8px;flex-wrap:wrap;padding-top:4px}
+.act-btn{padding:10px 18px;border-radius:var(--radius);font-size:12px;font-weight:500;
+  cursor:pointer;border:1px solid var(--border2);background:var(--bg);color:var(--text);
+  font-family:inherit;transition:all 0.12s}
+.act-btn:hover{background:var(--bg2)}
+
+@media(max-width:480px){
+  .poles-row{grid-template-columns:1fr}
+  .twin{grid-template-columns:1fr}
+  .meta-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- INTRO -->
+<div id="s-intro" class="screen on">
+  <div class="intro-wrap">
+    <div style="font-size:11px;font-weight:600;letter-spacing:2px;color:var(--text2);text-transform:uppercase;margin-bottom:1.2rem">리더십 스타일 진단</div>
+
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:1.6rem">
+      <span style="font-size:48px;font-weight:700;line-height:1.05;letter-spacing:-2px;color:var(--text)">나는 어떤 리더</span>
+      <span style="display:inline-flex;width:52px;height:52px;border-radius:50%;background:var(--text);color:var(--bg);font-size:30px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0">?</span>
+    </div>
+
+    <div style="width:36px;height:2px;background:var(--border);border-radius:1px;margin-bottom:1.6rem"></div>
+
+    <p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:2.2rem;max-width:380px">16가지 현실 상황에 슬라이더로 응답하면<br>나의 리더십 패턴을 바로 알 수 있습니다.<br>정답이 없는 진단입니다.</p>
+
+    <div style="display:flex;gap:6px;align-items:center;margin-bottom:2.2rem;flex-wrap:wrap">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e6f1fb;color:#0c447c;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">N</div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#faeeda;color:#633806;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">I</div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#e1f5ee;color:#085041;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">C</div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#eeedfe;color:#3c3489;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">E</div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#f1efe8;color:#444441;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">B</div>
+      <span style="font-size:12px;color:var(--text2);margin-left:4px">5가지 유형 중 나는 어디에 해당할까요</span>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <button class="start-btn" onclick="startQuiz()">진단 시작하기</button>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">16문항 · 약 10분<br>결과 즉시 출력</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="s-quiz" class="screen">
+  <div class="top-bar">
+    <span class="q-count" id="q-count"></span>
+    <span class="axis-pill" id="axis-pill"></span>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+  </div>
+  <div id="q-body"></div>
+</div>
+
+<!-- RESULT -->
+<div id="s-result" class="screen">
+  <div id="result-body"></div>
+</div>
+
+</div>
+<script>
+const AX=[
+  {name:'지시 ↔ 위임',left:'지시형',right:'위임형',color:'#378add',bg:'#e6f1fb',tc:'#0c447c'},
+  {name:'과업 ↔ 관계',left:'과업형',right:'관계형',color:'#e8853a',bg:'#faeeda',tc:'#633806'},
+  {name:'통제 ↔ 영감',left:'통제형',right:'영감형',color:'#3ab07a',bg:'#e1f5ee',tc:'#085041'},
+  {name:'자기 ↔ 타인',left:'자기중심',right:'타인중심',color:'#9b59b6',bg:'#eeedfe',tc:'#3c3489'},
+];
+
+const QS=[
+  {ax:0,rev:0,s:"팀원이 처음 맡는 업무 앞에서 '어떻게 해야 할지 모르겠어요'라고 한다.",
+   l:"단계별로 직접 알려준다",r:"스스로 찾아볼 수 있게 방향만 잡아준다"},
+  {ax:0,rev:0,s:"팀원의 실수로 프로젝트에 예상치 못한 차질이 생겼다.",
+   l:"내가 먼저 개입해서 직접 수습한다",r:"팀원 스스로 해결할 때까지 지켜보며 기다린다"},
+  {ax:0,rev:0,s:"팀의 방향을 결정해야 하는 중요한 순간이 왔다.",
+   l:"내가 먼저 방향을 정한 뒤 팀에 공유한다",r:"팀원 의견을 모아 함께 결정한다"},
+  {ax:0,rev:1,s:"팀원이 업무를 내 방식과 다르게 진행하고 있다.",
+   l:"내 방식으로 맞춰달라고 한다",r:"팀원 방식을 존중하고 결과로 판단한다"},
+  {ax:1,rev:0,s:"마감이 코앞인데 팀원 몇 명이 지쳐 보인다.",
+   l:"일단 결과 달성이 먼저, 속도를 높인다",r:"팀원 상태를 먼저 살피고 일정을 조율한다"},
+  {ax:1,rev:0,s:"이유 없이 팀 전체 분위기가 어수선하고 어색하다.",
+   l:"할 일을 명확히 하는 게 먼저라고 생각한다",r:"관계를 풀어주는 게 먼저라고 생각한다"},
+  {ax:1,rev:0,s:"최근 성과가 특히 좋은 팀원이 있다.",
+   l:"더 높은 목표와 도전을 부여한다",r:"무엇이 필요한지 먼저 물어본다"},
+  {ax:1,rev:0,s:"회의가 길어져도 결론이 나지 않는다.",
+   l:"내가 방향을 정리하고 마무리한다",r:"더 이야기할 수 있게 시간을 준다"},
+  {ax:2,rev:0,s:"팀에 새로운 도전 과제가 주어졌다.",
+   l:"리스크를 줄일 방법부터 먼저 생각한다",r:"왜 의미 있는 일인지 팀에 먼저 이야기한다"},
+  {ax:2,rev:0,s:"팀원의 동기가 눈에 띄게 떨어진 것 같다.",
+   l:"역할과 책임을 다시 명확히 정리한다",r:"무엇이 의미 있는지 함께 찾아본다"},
+  {ax:2,rev:0,s:"분기 성과 목표를 팀에 공유해야 한다.",
+   l:"수치와 기대치를 명확하게 전달한다",r:"이 목표가 왜 중요한지 먼저 이야기한다"},
+  {ax:2,rev:0,s:"조직 변화에 팀원들이 불안해하고 저항한다.",
+   l:"왜 해야 하는지 논리적으로 설득한다",r:"변화 후의 모습을 그림으로 보여준다"},
+  {ax:3,rev:0,s:"팀원이 커리어 성장에 대해 솔직하게 이야기한다.",
+   l:"팀에 도움이 되는 방향으로 안내한다",r:"팀원이 원하는 방향을 먼저 듣는다"},
+  {ax:3,rev:1,s:"팀원과 의견이 정면으로 충돌한다.",
+   l:"내 판단이 맞다고 생각하면 그대로 밀고 간다",r:"상대 입장을 충분히 듣고 다시 생각해본다"},
+  {ax:3,rev:0,s:"팀 전체가 공들인 프로젝트가 성공적으로 끝났다.",
+   l:"팀 전체의 성과로 함께 공유한다",r:"기여한 팀원을 구체적으로 부각시킨다"},
+  {ax:3,rev:0,s:"힘든 업무를 앞두고 걱정이 많아 보이는 팀원과 마주쳤다.",
+   l:"할 수 있다고 격려하고 지원을 약속한다",r:"무엇이 걱정인지 먼저 물어본다"},
+];
+
+const TYPES=[
+  {id:'navigator',name:'설계자형',meta:'나침반',letter:'N',
+   color:'#378add',bg:'#e6f1fb',tc:'#0c447c',
+   core:'방향을 먼저 잡고 구조로 팀을 이끕니다',
+   str:'혼란 속에서도 빠르게 정리하고 실행 경로를 만드는 힘이 있습니다',
+   blind:'팀원의 감정이나 맥락을 놓치기 쉽고, 방향 중심 소통이 반복되면 팀원의 자율성이 낮아질 수 있습니다',
+   grow:'결과를 지시하기 전에 팀원의 의견을 먼저 한 마디 묻는 습관을 만들어보세요',
+   idp:['경청 스킬 개발','팀원 1:1 월 1회 정기화','위임 실험 1건 도전'],
+   tags:['#거래적 리더십','#Goleman 지시형','#Situational S1']},
+  {id:'igniter',name:'점화자형',meta:'불꽃',letter:'I',
+   color:'#e8853a',bg:'#faeeda',tc:'#633806',
+   core:'의미와 비전으로 팀의 동기를 만듭니다',
+   str:'팀 에너지를 끌어올리고 방향감을 심어주는 데 탁월합니다',
+   blind:'실행 디테일이 빠지거나 현실감이 떨어질 수 있습니다. 비전이 반복되면 팀원이 피로감을 느낄 수 있습니다',
+   grow:'비전 이야기 직후, 구체적인 첫 번째 실행 단계를 함께 정의하는 루틴을 추가해보세요',
+   idp:['실행 계획 수립 스킬','OKR 활용 목표 관리','팀원 진척 정기 점검 루틴'],
+   tags:['#변혁적 리더십','#Goleman 비전제시형','#Situational S2']},
+  {id:'companion',name:'동반자형',meta:'뿌리',letter:'C',
+   color:'#3ab07a',bg:'#e1f5ee',tc:'#085041',
+   core:'관계와 신뢰를 먼저 쌓고 함께 성장합니다',
+   str:'팀 내 심리적 안전감의 근간이 되며, 팀 리텐션과 몰입도에 긍정적 영향을 줍니다',
+   blind:'결정이 느려지거나 갈등 회피 경향이 생길 수 있습니다. 필요한 피드백을 미루게 될 수 있습니다',
+   grow:"팀원을 충분히 듣고 나서 '내 의견도 말해도 될까요?'라는 말로 자신의 관점을 표현하는 연습을 해보세요",
+   idp:['SBI 피드백 모델 연습','어려운 대화 스킬','결정 시간 단축 실험'],
+   tags:['#서번트 리더십','#Goleman 친화형','#Situational S3']},
+  {id:'enabler',name:'촉진자형',meta:'전류',letter:'E',
+   color:'#9b59b6',bg:'#eeedfe',tc:'#3c3489',
+   core:'팀원 자율성을 극대화해 스스로 성장하게 합니다',
+   str:'구성원의 성장 속도가 빠르고 주도성이 높아지며, 조직 전체의 실행 역량이 강화됩니다',
+   blind:'방향 부재 시 팀이 흔들릴 수 있습니다. 위임이 방치처럼 느껴질 경우 팀원 불안감이 높아집니다',
+   grow:"위임 이후 '어떤 도움이 필요하면 바로 말해줘'라는 한 마디로 연결을 유지하세요",
+   idp:['방향 설정 스킬','체크인 루틴 설계','팀 OKR 정렬 연습'],
+   tags:['#변혁적 리더십','#서번트 리더십','#Situational S4']},
+  {id:'balancer',name:'균형자형',meta:'저울',letter:'B',
+   color:'#888780',bg:'#f1efe8',tc:'#444441',
+   core:'상황과 사람에 따라 유연하게 스타일을 전환합니다',
+   str:'다양한 팀원과 상황을 두루 커버할 수 있으며, 팀 구성이 다양할수록 강점이 드러납니다',
+   blind:'뚜렷한 색깔이 없어 보이거나 일관성이 부족해 보일 수 있습니다. 팀원이 이 리더를 예측하기 어렵다고 느낄 수 있습니다',
+   grow:'유연함의 기준이 되는 핵심 가치 1개를 명확히 정의하고 팀원에게 공유해보세요',
+   idp:['핵심 가치 명문화','리더십 일관성 피드백 수집','나만의 리더십 원칙 1장 작성'],
+   tags:['#Situational 전 유형','#Goleman 민주형','#상황적 리더십']},
+];
+
+let cur=0, answers=new Array(16).fill(null);
+let dragging=false, trackEl=null, handleEl=null;
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+}
+function startQuiz(){ show('s-quiz'); cur=0; renderQ(); }
+
+/* ── RENDER QUESTION ── */
+function renderQ(){
+  const q=QS[cur], ax=AX[q.ax];
+  const pct=Math.round(cur/16*100);
+  document.getElementById('q-count').textContent=`Q${String(cur+1).padStart(2,'0')} / 16`;
+  const pill=document.getElementById('axis-pill');
+  pill.textContent=ax.name; pill.style.cssText=`background:${ax.bg};color:${ax.tc}`;
+  document.getElementById('prog-fill').style.cssText=`width:${pct}%;background:${ax.color}`;
+
+  const val=answers[cur];
+  const hpct=val!==null?val:50;
+
+  document.getElementById('q-body').innerHTML=`
+    <div class="sit-card">
+      <div class="sit-label">상황</div>
+      <div class="sit-text">${q.s}</div>
+    </div>
+
+    <div class="poles-row">
+      <div class="pole l" id="pole-l">
+        <div class="pole-tag" id="ptag-l">${ax.left}</div>
+        <div class="pole-text">${q.l}</div>
+      </div>
+      <div class="pole r" id="pole-r">
+        <div class="pole-tag" id="ptag-r">${ax.right}</div>
+        <div class="pole-text">${q.r}</div>
+      </div>
+    </div>
+
+    <div class="slider-section">
+      <div class="slider-prompt">슬라이더를 드래그해 내 반응의 위치를 표시해 주세요</div>
+      <div class="track-wrap" id="track-wrap">
+        <div class="track" id="track">
+          <div class="track-fill" id="track-fill" style="width:${val!==null?hpct:0}%;background:${ax.color}55"></div>
+          <div class="track-ticks">
+            ${[0,25,50,75,100].map(p=>`<div class="tick" style="left:${p}%"></div>`).join('')}
+          </div>
+          <div class="handle ${val!==null?'live':''}" id="handle"
+            style="left:${val!==null?hpct:50}%;--acolor:${ax.color}">
+            <div class="handle-dot"></div>
+          </div>
+        </div>
+        <div class="scale-labels">
+          <span>${ax.left}</span><span>중립</span><span>${ax.right}</span>
+        </div>
+      </div>
+      <div class="val-display" id="val-display">
+        ${val!==null ? renderChip(val,ax) : '<span class="val-no">슬라이더를 움직여 주세요</span>'}
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn" onclick="goQ(-1)" ${cur===0?'disabled':''}>이전</button>
+      <button class="btn primary" id="btn-next" onclick="goQ(1)"
+        style="background:${ax.color}" ${val===null?'disabled':''}>
+        ${cur===15?'결과 보기':'다음'}
+      </button>
+      <span class="nav-hint" id="nav-hint" style="opacity:${val===null?1:0}">드래그해서 응답하세요</span>
+    </div>
+  `;
+
+  initSlider(ax, val);
+}
+
+function renderChip(pct, ax){
+  let label, score=(pct/100*4+1);
+  if(pct<=10) label='확실히 '+ax.left;
+  else if(pct<=35) label='주로 '+ax.left;
+  else if(pct<=45) label='약간 '+ax.left;
+  else if(pct<=55) label='중립';
+  else if(pct<=65) label='약간 '+ax.right;
+  else if(pct<=85) label='주로 '+ax.right;
+  else label='확실히 '+ax.right;
+  return `<span class="val-chip" style="background:${ax.bg};color:${ax.tc}">${label}</span>
+          <span class="val-num">${score.toFixed(1)} / 5.0</span>`;
+}
+
+/* ── SLIDER ── */
+function initSlider(ax, initVal){
+  const trackWrap=document.getElementById('track-wrap');
+  const track=document.getElementById('track');
+  const handle=document.getElementById('handle');
+  const fill=document.getElementById('track-fill');
+  const valDisplay=document.getElementById('val-display');
+  const poleL=document.getElementById('pole-l');
+  const poleR=document.getElementById('pole-r');
+  const ptagL=document.getElementById('ptag-l');
+  const ptagR=document.getElementById('ptag-r');
+  const btnNext=document.getElementById('btn-next');
+  const hint=document.getElementById('nav-hint');
+
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function getPct(clientX){
+    const rect=track.getBoundingClientRect();
+    return clamp((clientX-rect.left)/rect.width*100,0,100);
+  }
+  function updateVisual(pct, commit){
+    handle.style.left=pct+'%';
+    fill.style.width=pct+'%';
+    fill.style.background=ax.color+'55';
+    handle.classList.add('live');
+    handle.style.setProperty('--acolor',ax.color);
+    valDisplay.innerHTML=renderChip(pct,ax);
+    if(pct<45){
+      poleL.style.cssText=`border-color:${ax.color};border-width:2px;background:${ax.bg}`;
+      ptagL.style.color=ax.tc;
+      poleR.style.cssText='';ptagR.style.color='';
+    } else if(pct>55){
+      poleR.style.cssText=`border-color:${ax.color};border-width:2px;background:${ax.bg}`;
+      ptagR.style.color=ax.tc;
+      poleL.style.cssText='';ptagL.style.color='';
+    } else {
+      poleL.style.cssText='';ptagL.style.color='';
+      poleR.style.cssText='';ptagR.style.color='';
+    }
+    if(commit){
+      answers[cur]=pct;
+      btnNext.disabled=false;
+      hint.style.opacity='0';
+    }
+  }
+
+  if(initVal!==null) updateVisual(initVal,false);
+
+  function onMove(clientX){
+    const pct=getPct(clientX);
+    updateVisual(pct,true);
+  }
+
+  handle.addEventListener('mousedown',e=>{
+    dragging=true; handle.classList.add('drag'); e.preventDefault();
+  });
+  trackWrap.addEventListener('mousemove',e=>{ if(dragging) onMove(e.clientX); });
+  document.addEventListener('mouseup',e=>{
+    if(dragging){ dragging=false; handle.classList.remove('drag'); onMove(e.clientX); }
+  });
+  track.addEventListener('click',e=>{
+    const pct=getPct(e.clientX); updateVisual(pct,true);
+    if(cur<15) setTimeout(()=>goQ(1),360);
+  });
+
+  handle.addEventListener('touchstart',e=>{ dragging=true; e.preventDefault(); },{passive:false});
+  document.addEventListener('touchmove',e=>{
+    if(dragging){ onMove(e.touches[0].clientX); e.preventDefault(); }
+  },{passive:false});
+  document.addEventListener('touchend',e=>{
+    if(dragging){ dragging=false; onMove(e.changedTouches[0].clientX); }
+  });
+}
+
+function goQ(dir){
+  const next=cur+dir;
+  if(next<0) return;
+  if(dir>0 && answers[cur]===null) return;
+  cur=next;
+  if(cur===16){ showResult(); return; }
+  renderQ();
+}
+
+/* ── SCORING ── */
+function calcScores(){
+  const sum=[0,0,0,0], cnt=[0,0,0,0];
+  answers.forEach((v,i)=>{
+    if(v===null)return;
+    const q=QS[i];
+    const score=(q.rev?(100-v):v)/100*4+1;
+    sum[q.ax]+=score; cnt[q.ax]++;
+  });
+  return sum.map((s,i)=>cnt[i]>0?parseFloat((s/cnt[i]).toFixed(2)):3);
+}
+
+function assignType(sc){
+  const[a1,a2,a3,a4]=sc;
+  const allMid=[a1,a2,a3,a4].every(v=>v>=2.5&&v<=3.5);
+  if(allMid)return{primary:'balancer',secondary:null};
+  const raw={
+    navigator:(a1<=2.5?2:0)+(a3<=2.5?1:0),
+    igniter:(a3>=3.5?2:0)+(a1>2.5&&a1<3.5?1:0),
+    companion:(a2>=3.5?2:0)+(a4>=3.5?1:0),
+    enabler:(a1>=3.5?2:0)+(a4>=3.5?1:0),
+    balancer:0
+  };
+  const sorted=Object.entries(raw).sort((a,b)=>b[1]-a[1]);
+  const primary=sorted[0][0];
+  const secondary=sorted[1][1]>0?sorted[1][0]:null;
+  return{primary,secondary};
+}
+
+/* ── RESULT ── */
+function showResult(){
+  show('s-result');
+  const sc=calcScores();
+  const{primary,secondary}=assignType(sc);
+  const pt=TYPES.find(t=>t.id===primary);
+  const st=secondary?TYPES.find(t=>t.id===secondary):null;
+  const neutralPct=Math.round(answers.filter(v=>v!==null&&v>=40&&v<=60).length/16*100);
+
+  document.getElementById('result-body').innerHTML=`
+    ${neutralPct>40?`<div class="bias-warn">중립 응답 비율이 ${neutralPct}%입니다. 슬라이더를 더 적극적으로 움직이면 더 정확한 결과를 얻을 수 있습니다.</div>`:''}
+
+    <div class="result-top">
+      <div class="type-circle" style="background:${pt.bg};color:${pt.tc};font-size:28px">${pt.letter}</div>
+      <div class="type-name">${pt.name}</div>
+      <div class="type-meta">${pt.meta}</div>
+      ${st?`<span class="sub-pill" style="background:${st.bg};color:${st.tc}">+ ${st.name} 경향</span>`:''}
+    </div>
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sec-lbl">핵심 패턴</div>
+      <p class="core-text" style="--acolor:${pt.color}">${pt.core}</p>
+    </div>
+
+    <div class="section">
+      <div class="sec-lbl">강점과 맹점</div>
+      <div class="twin">
+        <div class="twin-box">
+          <div class="twin-lbl">강점</div>
+          <div class="twin-text">${pt.str}</div>
+        </div>
+        <div class="twin-box">
+          <div class="twin-lbl">맹점</div>
+          <div class="twin-text">${pt.blind}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-lbl">성장 방향</div>
+      <div class="grow-box" style="--acolor:${pt.color}">${pt.grow}</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-lbl">4개 축 프로파일</div>
+      ${sc.map((v,i)=>{
+        const ax=AX[i];
+        const p=parseFloat(((v-1)/4*100).toFixed(1));
+        return`<div class="ax-item">
+          <div class="ax-top">
+            <span class="ax-name">${ax.name}</span>
+            <span class="ax-score">${v.toFixed(2)} / 5.00</span>
+          </div>
+          <div class="ax-track">
+            <div class="ax-fill" style="width:${p}%;background:${ax.color}44"></div>
+            <div class="ax-dot" style="left:${p}%;background:${ax.color};border-color:#fff"></div>
+          </div>
+          <div class="ax-feet"><span>${ax.left}</span><span>${ax.right}</span></div>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <div class="section">
+      <div class="sec-lbl">이론 연결</div>
+      <div class="tag-row">
+        ${pt.tags.map(t=>`<span class="tag" style="background:${pt.bg};color:${pt.tc}">${t}</span>`).join('')}
+        ${st?st.tags.slice(0,2).map(t=>`<span class="tag" style="background:${st.bg};color:${st.tc}">${t}</span>`).join(''):''}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-lbl">개발 과제 (IDP)</div>
+      <div class="idp-list">
+        ${pt.idp.map(item=>`<div class="idp-row">
+          <div class="idp-bul" style="background:${pt.color}"></div>
+          <span>${item}</span>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="act-btn" onclick="restart()">다시 진단하기</button>
+    </div>
+  `;
+}
+
+function restart(){
+  cur=0; answers=new Array(16).fill(null); show('s-intro');
+}
+
+</script>
+</body>
+</html>
