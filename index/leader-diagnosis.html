@@ -530,13 +530,9 @@ function showResult(){
       <div class="sec-lbl">리더십 좌표</div>
       <div style="font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.6">X축: 과업 중심 ↔ 관계 중심 &nbsp;·&nbsp; Y축: 지시형 ↔ 위임형</div>
       <div style="display:flex;align-items:stretch;gap:6px">
-        <div style="display:flex;flex-direction:column;justify-content:space-between;padding:4px 0;min-width:32px;text-align:center">
-          <span style="font-size:9px;color:var(--text3);line-height:1.3">위임형</span>
-          <span style="font-size:9px;color:var(--text3);line-height:1.3">지시형</span>
-        </div>
         <div style="flex:1">
           <div class="quad-wrap">
-            <canvas id="quad-canvas" width="360" height="360"></canvas>
+            <canvas id="quad-canvas" width="400" height="400"></canvas>
           </div>
           <div class="quad-axis-x">
             <span>과업 중심</span>
@@ -620,15 +616,15 @@ function drawQuadrant(sc, pt){
   const canvas=document.getElementById('quad-canvas');
   if(!canvas)return;
   const dpr=window.devicePixelRatio||1;
-  const size=360;
+  const size=400;
   canvas.width=size*dpr; canvas.height=size*dpr;
   canvas.style.width=size+'px'; canvas.style.height=size+'px';
   const ctx=canvas.getContext('2d');
   ctx.scale(dpr,dpr);
 
-  const pad=40;
-  const W=size-pad*2;
-  const H=size-pad*2;
+  const padL=48, padR=20, padT=20, padB=20;
+  const W=size-padL-padR;
+  const H=size-padT-padB;
 
   // 배경
   ctx.fillStyle='#f5f5f3';
@@ -636,19 +632,21 @@ function drawQuadrant(sc, pt){
 
   // 사분면 배경색
   const quads=[
-    {x:pad,   y:pad,   color:'#faeeda44', label:'점화자형', lx:pad+W*0.25, ly:pad+H*0.18},
-    {x:pad+W/2,y:pad,  color:'#e1f5ee44', label:'동반자형', lx:pad+W*0.75, ly:pad+H*0.18},
-    {x:pad,   y:pad+H/2,color:'#e6f1fb44',label:'설계자형', lx:pad+W*0.25, ly:pad+H*0.82},
-    {x:pad+W/2,y:pad+H/2,color:'#eeedfe44',label:'지원자형',lx:pad+W*0.75, ly:pad+H*0.82},
+    {x:padL,      y:padT,       color:'#faeeda55', label:'점화자형', lx:padL+W*0.25, ly:padT+H*0.18},
+    {x:padL+W/2,  y:padT,       color:'#e1f5ee55', label:'동반자형', lx:padL+W*0.75, ly:padT+H*0.18},
+    {x:padL,      y:padT+H/2,   color:'#e6f1fb55', label:'설계자형', lx:padL+W*0.25, ly:padT+H*0.82},
+    {x:padL+W/2,  y:padT+H/2,   color:'#eeedfe55', label:'지원자형', lx:padL+W*0.75, ly:padT+H*0.82},
   ];
   quads.forEach(q=>{
     ctx.fillStyle=q.color;
     ctx.beginPath();
-    ctx.roundRect?ctx.roundRect(q.x,q.y,W/2,H/2,6):ctx.rect(q.x,q.y,W/2,H/2);
+    if(ctx.roundRect) ctx.roundRect(q.x,q.y,W/2,H/2,6);
+    else ctx.rect(q.x,q.y,W/2,H/2);
     ctx.fill();
-    ctx.fillStyle='#99999966';
+    ctx.fillStyle='#aaaaaa88';
     ctx.font=`500 11px -apple-system,sans-serif`;
     ctx.textAlign='center';
+    ctx.textBaseline='middle';
     ctx.fillText(q.label,q.lx,q.ly);
   });
 
@@ -656,42 +654,58 @@ function drawQuadrant(sc, pt){
   ctx.strokeStyle='#d0cdc8';
   ctx.lineWidth=1;
   ctx.setLineDash([4,4]);
-  // 수직 중심선
-  ctx.beginPath(); ctx.moveTo(pad+W/2,pad); ctx.lineTo(pad+W/2,pad+H); ctx.stroke();
-  // 수평 중심선
-  ctx.beginPath(); ctx.moveTo(pad,pad+H/2); ctx.lineTo(pad+W,pad+H/2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(padL+W/2,padT); ctx.lineTo(padL+W/2,padT+H); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(padL,padT+H/2); ctx.lineTo(padL+W,padT+H/2); ctx.stroke();
   ctx.setLineDash([]);
 
   // 테두리
   ctx.strokeStyle='#d0cdc8';
   ctx.lineWidth=1;
-  ctx.strokeRect(pad,pad,W,H);
+  ctx.strokeRect(padL,padT,W,H);
 
-  // 응답자 위치 계산
-  // ax1(과업↔관계): X축, 1~5 → 0~1 (관계형일수록 오른쪽)
-  // ax0(지시↔위임): Y축, 1~5 → 0~1 (위임형일수록 위쪽 = Y작아짐)
-  const xRatio=(sc[1]-1)/4; // 관계형
-  const yRatio=1-(sc[0]-1)/4; // 위임형 (반전)
-  const dotX=pad+xRatio*W;
-  const dotY=pad+yRatio*H;
+  // Y축 레이블 (캔버스 왼쪽에 직접)
+  ctx.save();
+  ctx.fillStyle='#999';
+  ctx.font=`500 10px -apple-system,sans-serif`;
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+  // 위임형 (상단)
+  ctx.translate(padL-14, padT+H*0.15);
+  ctx.rotate(-Math.PI/2);
+  ctx.fillText('위임형', 0, 0);
+  ctx.restore();
+  // 지시형 (하단)
+  ctx.save();
+  ctx.fillStyle='#999';
+  ctx.font=`500 10px -apple-system,sans-serif`;
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+  ctx.translate(padL-14, padT+H*0.85);
+  ctx.rotate(-Math.PI/2);
+  ctx.fillText('지시형', 0, 0);
+  ctx.restore();
 
-  // 그림자
-  ctx.shadowColor='rgba(0,0,0,0.2)';
-  ctx.shadowBlur=12;
-  ctx.shadowOffsetY=3;
+  // 응답자 위치
+  const xRatio=(sc[1]-1)/4;
+  const yRatio=1-(sc[0]-1)/4;
+  const dotX=padL+xRatio*W;
+  const dotY=padT+yRatio*H;
 
   // 외곽 링
   ctx.beginPath();
   ctx.arc(dotX,dotY,22,0,Math.PI*2);
   ctx.fillStyle=pt.color+'33';
   ctx.fill();
-  ctx.shadowColor='transparent';
 
   // 메인 점
+  ctx.shadowColor='rgba(0,0,0,0.18)';
+  ctx.shadowBlur=10;
+  ctx.shadowOffsetY=2;
   ctx.beginPath();
   ctx.arc(dotX,dotY,14,0,Math.PI*2);
   ctx.fillStyle=pt.color;
   ctx.fill();
+  ctx.shadowColor='transparent';
 
   // 타입 레터
   ctx.fillStyle='#fff';
@@ -700,11 +714,11 @@ function drawQuadrant(sc, pt){
   ctx.textBaseline='middle';
   ctx.fillText(pt.letter,dotX,dotY);
 
-  // 좌표 레이블
+  // 이름 레이블
   ctx.fillStyle=pt.color;
   ctx.font=`600 10px -apple-system,sans-serif`;
   ctx.textBaseline='top';
-  const labelY=dotY+18 < pad+H-14 ? dotY+18 : dotY-28;
+  const labelY=dotY+18 < padT+H-16 ? dotY+18 : dotY-28;
   ctx.fillText(pt.name, dotX, labelY);
 }
 
