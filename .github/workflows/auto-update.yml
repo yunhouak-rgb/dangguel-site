@@ -1,0 +1,114 @@
+name: Auto Update Site
+
+on:
+  push:
+    paths:
+      - 'index/blog-post-*.html'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Auto update _redirects, sitemap.xml, hub pages
+        run: |
+          cd index
+          python3 << 'PYEOF'
+          import os, re, glob
+          from datetime import date
+
+          # 1. 파일명 → URL 슬러그 매핑 규칙
+          def file_to_url(fname):
+              slug = fname.replace('blog-post-', '').replace('.html', '')
+              mapping = {
+                  'interview-strategy':      'blog/interview-strategy',
+                  'interview-1min':          'blog/interview-1min-selfintro',
+                  'interview-final':         'blog/interview-final-comment',
+                  'coverletter-motivation':  'blog/cover-letter-motivation-examples',
+                  'coverletter-structure':   'blog/cover-letter-structure',
+                  'coverletter-experience':  'blog/cover-letter-experience',
+                  'nurse-coverletter':       'blog/nurse-cover-letter',
+                  'secretary-coverletter':   'blog/secretary-cover-letter',
+                  'company-framework':       'blog/company-analysis-framework',
+                  'job-analysis':            'blog/job-analysis',
+                  'job-scope':               'blog/job-search-scope-strategy',
+                  'job-anxiety':             'blog/job-search-anxiety',
+                  'public-company-coverletter': 'blog/public-company-cover-letter',
+              }
+              return mapping.get(slug, f'blog/{slug.replace("-", "-")}')
+
+          # 2. 모든 blog-post-*.html 파일 수집
+          posts = sorted(glob.glob('blog-post-*.html'))
+          print(f'발견된 글: {len(posts)}개')
+
+          # 3. _redirects 재생성
+          lines = [
+              '/diagnosis                  /quiz.html                              200',
+              '/blog/interview             /blog-interview.html                    200',
+              '/blog/cover-letter          /blog-cover-letter.html                 200',
+              '/blog/company-analysis      /blog-company-analysis.html             200',
+              '/blog/mind-care             /blog-mind-care.html                    200',
+              '',
+          ]
+          for fname in posts:
+              url = file_to_url(fname)
+              lines.append(f'/{url:<55} /{fname:<60} 200')
+          lines += ['', '/*  /index.html  200', '']
+          
+          with open('_redirects', 'w') as f:
+              f.write('\n'.join(lines))
+          print('_redirects 업데이트 완료')
+
+          # 4. sitemap.xml 재생성
+          base = 'https://dangguel-site.pages.dev'
+          sitemap_urls = [
+              ('/', '1.0', 'weekly'),
+              ('/diagnosis', '0.9', 'monthly'),
+              ('/blog/interview', '0.8', 'weekly'),
+              ('/blog/cover-letter', '0.8', 'weekly'),
+              ('/blog/company-analysis', '0.8', 'weekly'),
+              ('/blog/mind-care', '0.8', 'weekly'),
+          ]
+          for fname in posts:
+              url = '/' + file_to_url(fname)
+              sitemap_urls.append((url, '0.7', 'monthly'))
+
+          xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+          xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+          for url, pri, freq in sitemap_urls:
+              xml += f'  <url>\n    <loc>{base}{url}</loc>\n    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n  </url>\n'
+          xml += '</urlset>\n'
+          
+          with open('sitemap.xml', 'w') as f:
+              f.write(xml)
+          print('sitemap.xml 업데이트 완료')
+
+          # 5. 각 글의 카테고리 파악 후 허브 페이지 업데이트
+          def get_category(fname):
+              cats = {
+                  'interview': 'blog-interview.html',
+                  'coverletter': 'blog-cover-letter.html',
+                  'nurse': 'blog-cover-letter.html',
+                  'secretary': 'blog-cover-letter.html',
+                  'public-company': 'blog-cover-letter.html',
+                  'company': 'blog-company-analysis.html',
+                  'job-analysis': 'blog-company-analysis.html',
+                  'job-scope': 'blog-mind-care.html',
+                  'job-anxiety': 'blog-mind-care.html',
+              }
+              for key, hub in cats.items():
+                  if key in fname:
+                      return hub
+              return None
+
+          print('모든 업데이트 완료!')
+          PYEOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index/_redirects index/sitemap.xml
+          git diff --staged --quiet || git commit -m "auto: _redirects, sitemap.xml 자동 업데이트"
+          git push
