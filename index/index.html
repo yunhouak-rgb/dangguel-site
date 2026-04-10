@@ -273,43 +273,129 @@ a { color: inherit; text-decoration: none; }
 }
 
 </style>
+  <style>
+/* PROBLEM SECTION */
+.problem-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); margin-top: 40px; }
+.problem-item { background: var(--white); padding: 32px 28px; }
+.problem-item__icon { font-size: 1.4rem; margin-bottom: 14px; }
+.problem-item__title { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 8px; line-height: 1.4; }
+.problem-item__desc { font-size: 0.85rem; color: var(--text-sub); line-height: 1.7; font-weight: 300; }
+.problem-answer { margin-top: 40px; padding: 32px; border-left: 3px solid var(--gold); background: var(--gray-50); }
+.problem-answer__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.problem-answer__text { font-size: 1.05rem; color: var(--text); line-height: 1.85; font-weight: 400; }
+.problem-answer__text strong { font-weight: 700; }
+
+/* DIAGNOSIS SECTION */
+.diag-section { background: var(--black); color: var(--white); padding: 80px 0; }
+.diag-section .section-label { color: rgba(255,255,255,0.4); }
+.diag-section .section-label::after { background: rgba(255,255,255,0.1); }
+.diag-section__title { font-size: clamp(1.8rem,3.5vw,2.6rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 16px; }
+.diag-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.08); margin: 40px 0; }
+.diag-step { padding: 28px 24px; background: var(--black); }
+.diag-step__num { font-family: 'Instrument Sans', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 12px; }
+.diag-step__title { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.diag-step__desc { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+
+@media (max-width: 768px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .diag-steps { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a href="/" class="site-logo">취업연구소</a>
-    <nav class="site-nav">
-      <a href="/diagnosis">무료진단</a>
-      <a href="/blog/interview">면접</a>
-      <a href="/blog/cover-letter">자소서</a>
-      <a href="/blog/company-analysis">기업이해</a>
-      <a href="/blog/mind-care">마음관리</a>
-      <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="nav-book">전자책</a>
-    </nav>
-  </div>
-</header>
-
+<header class="site-header"><div class="container site-header__inner">
+  <a href="/" class="site-logo">취업연구소</a>
+  <nav class="site-nav">
+    <a href="/diagnosis">무료진단</a><a href="/blog/interview">면접</a><a href="/blog/cover-letter">자소서</a><a href="/blog/company-analysis">기업이해</a><a href="/blog/mind-care">마음관리</a>
+    <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="nav-book">전자책</a>
+  </nav>
+</div></header>
 <main>
 
+  <!-- HERO: 문제 공감 -->
   <section class="hero">
     <div class="container">
-      <div class="hero__eyebrow">취업 준비 가이드</div>
-      <h1 class="hero__title">막막한 취업 준비,<br /><em>전략</em>이 있으면 달라집니다</h1>
-      <p class="hero__desc">불합격을 반복하는 이유는 노력이 부족해서가 아닙니다. 전략이 없어서입니다. 무료 진단으로 내 약점을 확인하고, 합격하는 사람들의 전략을 배우세요.</p>
-      <div class="hero__actions">
-        <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="btn btn--gold btn--lg">전자책</a>
-        <a href="/diagnosis" class="btn btn--outline">무료 진단 먼저 해보기</a>
+      <div class="hero__eyebrow">취업 준비, 이런 고민 있으신가요</div>
+      <h1 class="hero__title">열심히 하는데<br />왜 결과가 없을까요</h1>
+      <p class="hero__desc">스펙도 쌓고, 자소서도 썼고, 면접도 봤는데 계속 떨어집니다. 노력이 부족한 게 아닙니다. 방향이 없는 겁니다.</p>
+
+      <div class="problem-grid fade-up">
+        <div class="problem-item">
+          <div class="problem-item__icon">📝</div>
+          <div class="problem-item__title">"자소서를 어떻게 써야 할지<br/>모르겠어요"</div>
+          <div class="problem-item__desc">남들 다 쓰는 소재로 어떻게 차별화하나요. 같은 경험인데 친구 자소서는 왜 더 좋아 보이죠.</div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-item__icon">😰</div>
+          <div class="problem-item__title">"면접만 가면 떨려서<br/>준비한 게 다 날아가요"</div>
+          <div class="problem-item__desc">머릿속에선 완벽했는데 막상 면접관 앞에 서면 아무 말도 못합니다. 연습을 더 해야 하나요.</div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-item__icon">🏢</div>
+          <div class="problem-item__title">"기업분석을 해야 한다는데<br/>뭘 어떻게 봐야 하나요"</div>
+          <div class="problem-item__desc">홈페이지 읽고 뉴스 찾아봤는데 자소서에 어떻게 써야 할지 여전히 모르겠습니다.</div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-item__icon">😮‍💨</div>
+          <div class="problem-item__title">"불합격이 반복되니<br/>무기력해집니다"</div>
+          <div class="problem-item__desc">처음엔 의욕이 넘쳤는데 떨어질수록 준비하는 게 무의미하게 느껴집니다. 제가 문제인가요.</div>
+        </div>
       </div>
-      <div class="hero__meta">
-        <div class="hero__meta-item"><strong>전략 수립</strong>타겟 기업·직무 설정법</div>
-        <div class="hero__meta-item"><strong>자소서</strong>강점 재구성 + 예시</div>
-        <div class="hero__meta-item"><strong>면접</strong>면접관이 원하는 답변 구조</div>
-        <div class="hero__meta-item"><strong>워크시트</strong>체크리스트 제공</div>
+
+      <div class="problem-answer fade-up">
+        <div class="problem-answer__label">취업연구소의 답</div>
+        <p class="problem-answer__text">이 고민들의 공통점은 하나입니다. <strong>전략 없이 열심히만 하고 있는 것.</strong><br/>
+        무료 진단으로 지금 내 준비에서 뭐가 빠져있는지 확인하고, 방향을 잡으세요.</p>
       </div>
     </div>
   </section>
 
+  <!-- 무료 진단 -->
+  <section class="diag-section">
+    <div class="container">
+      <div class="section-label" style="color:rgba(255,255,255,0.4);">무료 진단</div>
+      <h2 class="diag-section__title">지금 내 준비 상태를<br/>5분 만에 확인하세요</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;max-width:480px;">면접, 자소서, 기업이해, 마음관리 — 4가지 영역 중 어디가 가장 약한지 진단하고, 거기서 시작하면 됩니다. 로그인 없이 무료로 시작하세요.</p>
+      <div class="diag-steps fade-up">
+        <div class="diag-step">
+          <div class="diag-step__num">STEP 01</div>
+          <div class="diag-step__title">4가지 영역 진단</div>
+          <div class="diag-step__desc">면접·자소서·기업이해·마음관리 현재 상태를 4개 질문으로 파악합니다</div>
+        </div>
+        <div class="diag-step">
+          <div class="diag-step__num">STEP 02</div>
+          <div class="diag-step__title">약점 파악</div>
+          <div class="diag-step__desc">어디가 가장 부족한지 결과로 확인합니다</div>
+        </div>
+        <div class="diag-step">
+          <div class="diag-step__num">STEP 03</div>
+          <div class="diag-step__title">맞춤 콘텐츠 연결</div>
+          <div class="diag-step__desc">약점을 보완하는 글과 전략을 바로 추천해드립니다</div>
+        </div>
+      </div>
+      <a href="/diagnosis" class="btn btn--gold btn--lg">무료 진단 시작하기</a>
+    </div>
+  </section>
+
+  <!-- 전자책 -->
+  <section class="section">
+    <div class="container">
+      <div class="book-cta fade-up">
+        <div>
+          <div class="book-cta__label">전자책</div>
+          <h2 class="book-cta__title">채용절벽을 뚫는<br />취업 근육 키우기</h2>
+          <p class="book-cta__desc">진단으로 방향을 잡았다면, 이제 전략을 체계적으로 익힐 차례입니다. 합격하는 사람들이 실제로 쓰는 전략, 자소서 재구성법, 면접 답변 구조를 한 권에 담았습니다.<br/><br/>취업 전략 수립 · 강점 기반 자소서 · 면접관 관점의 답변 · 워크시트 & 체크리스트 · 채용 세미나 무료 초대 · 업데이트 무료 제공</p>
+        </div>
+        <div class="book-cta__side">
+          <div class="book-cta__price">26,000원</div>
+          <div class="book-cta__price-sub">구매 후 1~2일 내 이메일 발송</div>
+          <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="btn btn--gold btn--lg">지금 구매하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 카테고리 -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-label">4가지 준비 영역</div>
@@ -338,49 +424,21 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
+  <!-- 최신 글 -->
   <section class="section">
-    <div class="container">
-      <div class="book-cta fade-up">
-        <div>
-          <div class="book-cta__label">전자책</div>
-          <h2 class="book-cta__title">채용절벽을 뚫는<br />취업 근육 키우기</h2>
-          <p class="book-cta__desc">취업 실패를 반복하는 이유는 전략이 없어서입니다. 합격하는 사람들이 실제로 쓰는 전략, 자소서 재구성법, 면접 답변 구조를 한 권에 담았습니다. 워크시트·체크리스트·채용 세미나 무료 초대 포함.</p>
-        </div>
-        <div class="book-cta__side">
-          <div class="book-cta__price">26,000원</div>
-          <div class="book-cta__price-sub">구매 후 1~2일 내 이메일 발송</div>
-          <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="btn btn--gold btn--lg">지금 구매하기</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt">
     <div class="container">
       <div class="section-label">추천 글</div>
       <div class="post-list">
         <a href="/blog/interview-strategy" class="post-item fade-up">
-          <div>
-            <div class="post-item__cat">면접</div>
-            <div class="post-item__title">면접관이 원하는 답변 흐름 만드는 법</div>
-            <div class="post-item__desc">면접관 관점에서 어떤 답변이 기억에 남는지 실전 전략으로 정리했습니다</div>
-          </div>
+          <div><div class="post-item__cat">면접</div><div class="post-item__title">면접관이 원하는 답변 흐름 만드는 법</div><div class="post-item__desc">면접관 관점에서 어떤 답변이 기억에 남는지 실전 전략으로 정리했습니다</div></div>
           <div class="post-item__date">2026.03</div>
         </a>
         <a href="/blog/cover-letter-motivation-examples" class="post-item fade-up">
-          <div>
-            <div class="post-item__cat">자소서</div>
-            <div class="post-item__title">자소서 지원동기 예시 10개 (직무별 완전 가이드)</div>
-            <div class="post-item__desc">바로 참고할 수 있는 직무별 지원동기 구조와 실제 예시</div>
-          </div>
+          <div><div class="post-item__cat">자소서</div><div class="post-item__title">자소서 지원동기 예시 10개 (직무별 완전 가이드)</div><div class="post-item__desc">바로 참고할 수 있는 직무별 지원동기 구조와 실제 예시</div></div>
           <div class="post-item__date">2026.03</div>
         </a>
         <a href="/blog/job-search-scope-strategy" class="post-item fade-up">
-          <div>
-            <div class="post-item__cat">마음관리</div>
-            <div class="post-item__title">지원 범위를 좁히면 준비가 쉬워집니다</div>
-            <div class="post-item__desc">흔들리는 지원 기준을 줄이고 준비 흐름을 다시 세우는 방법</div>
-          </div>
+          <div><div class="post-item__cat">마음관리</div><div class="post-item__title">지원 범위를 좁히면 준비가 쉬워집니다</div><div class="post-item__desc">흔들리는 지원 기준을 줄이고 준비 흐름을 다시 세우는 방법</div></div>
           <div class="post-item__date">2026.03</div>
         </a>
       </div>
@@ -388,33 +446,13 @@ a { color: inherit; text-decoration: none; }
   </section>
 
 </main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
-      <div>
-        <div class="footer__brand">취업연구소</div>
-        <div class="footer__tagline">취업 준비의 흐름을 잡아주는 콘텐츠 사이트</div>
-      </div>
-      <nav class="footer__nav">
-        <a href="/">홈</a>
-        <a href="/diagnosis">무료진단</a>
-        <a href="/blog/interview">면접</a>
-        <a href="/blog/cover-letter">자소서</a>
-        <a href="/blog/company-analysis">기업이해</a>
-        <a href="/blog/mind-care">마음관리</a>
-        <a href="https://www.latpeed.com/products/Ge7M-" target="_blank">전자책</a>
-      </nav>
-    </div>
-    <div class="footer__copy">© 2026 취업연구소 · Contact: yuncontest@naver.com</div>
+<footer class="footer"><div class="container">
+  <div class="footer__inner">
+    <div><div class="footer__brand">취업연구소</div><div class="footer__tagline">취업 준비의 흐름을 잡아주는 콘텐츠 사이트</div></div>
+    <nav class="footer__nav"><a href="/">홈</a><a href="/diagnosis">무료진단</a><a href="/blog/interview">면접</a><a href="/blog/cover-letter">자소서</a><a href="/blog/company-analysis">기업이해</a><a href="/blog/mind-care">마음관리</a><a href="https://www.latpeed.com/products/Ge7M-" target="_blank">전자책</a></nav>
   </div>
-</footer>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
+  <div class="footer__copy">© 2026 취업연구소 · Contact: yuncontest@naver.com</div>
+</div></footer>
+<script>const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');o.unobserve(i.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>o.observe(el));</script>
 </body>
 </html>
