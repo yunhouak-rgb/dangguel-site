@@ -1,75 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dangguel.netlify.app/</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/diagnosis</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/diagnosis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/interview</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/company-analysis</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/cover-letter</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/interview</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/company-analysis</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/cover-letter</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/mind-care</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/mind-care</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/interview-strategy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/interview-strategy</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/interview-1min-selfintro</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/company-analysis-framework</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/interview-final-comment</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/interview-1minute-self-introduction-examples</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/cover-letter-motivation-examples</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/interview-final-comment-examples</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/cover-letter-structure</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/cover-letter-motivation-examples</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/cover-letter-experience</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/cover-letter-structure-3-steps</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/nurse-cover-letter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/experience-story-structuring</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/company-analysis-framework</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/nurse-cover-letter-motivation</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/job-analysis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/secretary-cover-letter-motivation</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/job-search-scope-strategy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dangguel.netlify.app/blog/teacher-cover-letter-motivation</loc>
-    <lastmod>2026-03-15</lastmod>
-  </url>
-  <url>
-    <loc>https://dangguel.netlify.app/blog/job-search-scope-strategy</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://dangguel-site.pages.dev/blog/job-search-anxiety</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
