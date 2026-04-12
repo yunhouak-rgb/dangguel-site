@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>빠른취업 | 취업 준비, 진단부터 합격 전략까지</title>
+  <meta name="description" content="면접, 자소서, 기업이해, 마음관리까지 취업 준비의 흐름을 잡아주는 사이트. 무료 진단으로 지금 내 약점을 확인하고, 합격 전략 전자책으로 완성하세요." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="빠른취업 | 취업 준비, 진단부터 합격 전략까지" />
+  <meta property="og:description" content="무료 진단으로 내 약점을 확인하고, 채용절벽을 뚫는 합격 전략 전자책으로 완성하세요." />
+  <meta property="og:url" content="https://dangguel-site.pages.dev/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"빠른취업","url":"https://dangguel-site.pages.dev/","description":"취업 준비 흐름을 잡아주는 무료 진단과 콘텐츠 사이트","publisher":{"@type":"Organization","name":"빠른취업"}}
+  </script>
+  <style>
+    html, body { margin: 0; padding: 0; background: #fff; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; }
+    .fallback { min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #222; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="fallback">빠른취업 페이지를 불러오는 중입니다...</div>
+  <script>
+    fetch('/index.html', { cache: 'no-store' })
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        var updated = html
+          .replaceAll('취업연구소의 답', '빠른취업의 답')
+          .replaceAll('© 2026 취업연구소 · Contact: yuncontest@naver.com', '© 2026 빠른취업 · Contact: yuncontest@naver.com')
+          .replaceAll('취업연구소 | 취업 준비, 진단부터 합격 전략까지', '빠른취업 | 취업 준비, 진단부터 합격 전략까지')
+          .replaceAll('"name":"취업연구소"', '"name":"빠른취업"')
+          .replaceAll('>취업연구소<', '>빠른취업<');
+        document.open();
+        document.write(updated);
+        document.close();
+      })
+      .catch(function () {
+        document.querySelector('.fallback').textContent = '빠른취업 페이지를 불러오지 못했습니다.';
+      });
+  </script>
+</body>
+</html>
