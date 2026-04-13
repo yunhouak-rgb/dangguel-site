@@ -258,7 +258,16 @@ a { color: inherit; text-decoration: none; }
   .post-item { grid-template-columns: 1fr; }
   .book-cta { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
   .result-items { grid-template-columns: 1fr; }
-  .site-nav a:not(.nav-book) { display: none; }
+  .site-nav a:not(.nav-book):not(.nav-menu-btn) { display: none; }
+}
+/* 모바일 메뉴 */
+.nav-menu-btn { display: none; }
+.mobile-menu { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--gray-200); z-index: 99; padding: 8px 0; }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; padding: 14px 24px; font-size: 0.95rem; font-weight: 500; color: var(--gray-600); border-bottom: 1px solid var(--gray-100); }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 600; }
+@media (max-width: 768px) {
+  .nav-menu-btn { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 500; color: var(--gray-600); background: none; border: none; cursor: pointer; padding: 6px 12px; }
 }
 
 </style>
@@ -269,8 +278,17 @@ a { color: inherit; text-decoration: none; }
   <nav class="site-nav">
     <a href="/diagnosis">무료진단</a><a href="/blog/interview">면접</a><a href="/blog/cover-letter">자소서</a><a href="/blog/company-analysis">기업이해</a><a href="/blog/mind-care">마음관리</a>
     <a href="https://www.latpeed.com/products/Ge7M-" target="_blank" class="nav-book">전자책</a>
+    <button class="nav-menu-btn" onclick="toggleMenu()" id="menuBtn">☰ 메뉴</button>
   </nav>
 </div></header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/diagnosis">무료진단</a>
+  <a href="/blog/interview">면접</a>
+  <a href="/blog/cover-letter">자소서</a>
+  <a href="/blog/company-analysis">기업이해</a>
+  <a href="/blog/mind-care">마음관리</a>
+  <a href="https://www.latpeed.com/products/Ge7M-" target="_blank">전자책 구매</a>
+</div>
 <main>
   <div class="post-header"><div class="container">
     <div class="post-header__label"><a href="/blog/interview" style="color:var(--text-muted);text-decoration:none;">면접</a></div>
@@ -304,5 +322,21 @@ a { color: inherit; text-decoration: none; }
   </div>
   <div class="footer__copy">© 2026 좋은 취업 · Contact: yuncontest@naver.com</div>
 </div></footer>
-<script>const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');o.unobserve(i.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>o.observe(el));</script>
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  const b=document.getElementById('menuBtn');
+  m.classList.toggle('open');
+  b.textContent=m.classList.contains('open')?'✕ 닫기':'☰ 메뉴';
+}
+document.addEventListener('click',function(e){
+  const m=document.getElementById('mobileMenu');
+  if(m&&!m.contains(e.target)&&!document.getElementById('menuBtn').contains(e.target)){
+    m.classList.remove('open');
+    document.getElementById('menuBtn').textContent='☰ 메뉴';
+  }
+});
+const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');o.unobserve(i.target);}});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>o.observe(el));
+</script>
 </body></html>
