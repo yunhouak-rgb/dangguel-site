@@ -200,7 +200,7 @@ a { color: inherit; text-decoration: none; }
   .hero__visual { display: none; }
   .card-grid--2, .card-grid--3, .card-grid--4 { grid-template-columns: 1fr; }
   .result-items { grid-template-columns: 1fr; }
-  .site-nav a:not(.nav-book):not([href="/diagnosis"]) { display: none; }
+  .site-nav a:not(.nav-book):not([href="/quiz"]) { display: none; }
   .post-item { grid-template-columns: 1fr; }
   .book-cta { padding: 32px 24px; }
 }

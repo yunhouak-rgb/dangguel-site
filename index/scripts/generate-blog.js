@@ -3,14 +3,14 @@ const path = require("path");
 const { execSync } = require("child_process");
 
 const ROOT = process.cwd();
-const BASE_URL = process.env.BASE_URL || "https://dangguel.netlify.app";
+const BASE_URL = process.env.BASE_URL || "https://dangguel-site.pages.dev";
 
 const NAV_ITEMS = [
-  { href: "/diagnosis", label: "무료 진단", key: "diagnosis" },
-  { href: "/blog/company-analysis", label: "기업이해", key: "companyUnderstanding" },
-  { href: "/blog/interview", label: "면접", key: "interview" },
-  { href: "/blog/cover-letter", label: "자소서", key: "coverLetter" },
-  { href: "/blog/mind-care", label: "마음관리", key: "mindCare" },
+  { href: "/quiz", label: "무료 진단", key: "diagnosis" },
+  { href: "/blog/company-analysis/", label: "기업이해", key: "companyUnderstanding" },
+  { href: "/blog/interview/", label: "면접", key: "interview" },
+  { href: "/blog/cover-letter/", label: "자소서", key: "coverLetter" },
+  { href: "/blog/mind-care/", label: "마음관리", key: "mindCare" },
   { href: "/#ebook", label: "가이드북", key: "guidebook", cta: true }
 ];
 
@@ -179,13 +179,69 @@ const ARTICLES = [
   }
 ];
 
+const STATIC_ARTICLE_ROUTES = [
+  ["/blog/interview-strategy/", "blog-post-interview-strategy.html"],
+  ["/blog/interview-1min-selfintro/", "blog-post-interview-1min.html"],
+  ["/blog/interview-final-comment/", "blog-post-interview-final.html"],
+  ["/blog/cover-letter-motivation-examples/", "blog-post-coverletter-motivation.html"],
+  ["/blog/cover-letter-structure/", "blog-post-coverletter-structure.html"],
+  ["/blog/cover-letter-experience/", "blog-post-coverletter-experience.html"],
+  ["/blog/nurse-cover-letter/", "blog-post-nurse-coverletter.html"],
+  ["/blog/company-analysis-framework/", "blog-post-company-framework.html"],
+  ["/blog/job-analysis/", "blog-post-job-analysis.html"],
+  ["/blog/job-search-scope-strategy/", "blog-post-job-scope.html"],
+  ["/blog/job-search-anxiety/", "blog-post-job-anxiety.html"],
+  ["/blog/public-company-cover-letter/", "blog-post-public-company-coverletter.html"],
+  ["/blog/finance-cover-letter/", "blog-post-finance-coverletter.html"],
+  ["/blog/career-change-cover-letter/", "blog-post-career-change-coverletter.html"],
+  ["/blog/daycare-teacher-cover-letter/", "blog-post-daycare-teacher-coverletter.html"],
+  ["/blog/how-to-write-cover-letter/", "blog-post-how-to-write-cover-letter.html"],
+  ["/blog/selfintro-vs-resume/", "blog-post-selfintro-vs-resume.html"],
+  ["/blog/personality-strengths-weaknesses/", "blog-post-personality-strengths.html"],
+  ["/blog/interview-nervousness/", "blog-post-interview-nervousness.html"],
+  ["/blog/conglomerate-vs-sme-resume/", "blog-post-conglomerate-vs-sme.html"],
+  ["/blog/no-spec-cover-letter/", "blog-post-no-spec-coverletter.html"],
+  ["/blog/job-retake-strategy/", "blog-post-job-retake.html"],
+  ["/blog/interview-outfit/", "blog-post-interview-outfit.html"],
+  ["/blog/pressure-interview/", "blog-post-pressure-interview.html"],
+  ["/blog/civil-servant-cover-letter/", "blog-post-civil-servant-coverletter.html"],
+  ["/blog/interview-questions-prep/", "blog-post-interview-questions-prep.html"],
+  ["/blog/job-search-period/", "blog-post-job-search-period.html"],
+  ["/blog/social-worker-cover-letter/", "blog-post-social-worker-coverletter.html"],
+  ["/blog/intern-cover-letter/", "blog-post-intern-coverletter.html"],
+  ["/blog/interview-common-questions/", "blog-post-interview-common-questions.html"],
+  ["/blog/portfolio-guide/", "blog-post-portfolio-guide.html"],
+  ["/blog/cover-letter-opening/", "blog-post-cover-letter-opening.html"]
+];
+
 function safeRead(file) {
   return fs.readFileSync(path.join(ROOT, file), "utf8");
 }
 
 function writeFile(name, content) {
-  fs.writeFileSync(path.join(ROOT, name), content, "utf8");
+  const target = path.join(ROOT, name);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, content, "utf8");
   console.log(`generated: ${name}`);
+}
+
+function writePrettyRoute(route, content) {
+  const cleanRoute = route.replace(/^\/+|\/+$/g, "");
+  writeFile(path.join(cleanRoute, "index.html"), content);
+}
+
+function normalizePrettyHtml(content, route) {
+  const canonical = `${BASE_URL}${route}`;
+  return content
+    .replaceAll("https://dangguel.netlify.app", BASE_URL)
+    .replaceAll('href="/diagnosis"', 'href="/quiz"')
+    .replaceAll('href="/blog/interview"', 'href="/blog/interview/"')
+    .replaceAll('href="/blog/cover-letter"', 'href="/blog/cover-letter/"')
+    .replaceAll('href="/blog/company-analysis"', 'href="/blog/company-analysis/"')
+    .replaceAll('href="/blog/mind-care"', 'href="/blog/mind-care/"')
+    .replace(/<link rel="canonical" href="[^"]+" \/>/, `<link rel="canonical" href="${canonical}" />`)
+    .replace(/<meta property="og:url" content="[^"]+" \/>/, `<meta property="og:url" content="${canonical}" />`)
+    .replace(/"mainEntityOfPage":"[^"]+"/, `"mainEntityOfPage":"${canonical}"`);
 }
 
 function getLastModDate(filename) {
@@ -232,11 +288,11 @@ function escapeHtml(value) {
 }
 
 function articleRoute(article) {
-  return `/blog/${article.slug}`;
+  return `/blog/${article.slug}/`;
 }
 
 function topicRoute(topicKey) {
-  return `/blog/${TOPICS[topicKey].slug}`;
+  return `/blog/${TOPICS[topicKey].slug}/`;
 }
 
 function topicFile(topicKey) {
@@ -266,11 +322,11 @@ function buildFooter() {
     <div class="container" style="padding-top:40px;padding-bottom:40px;">
       <div class="footer__grid">
         <a href="/" class="hover:text-slate-900">홈</a>
-        <a href="/diagnosis" class="hover:text-slate-900">무료 진단</a>
-        <a href="/blog/company-analysis" class="hover:text-slate-900">기업이해</a>
-        <a href="/blog/interview" class="hover:text-slate-900">면접</a>
-        <a href="/blog/cover-letter" class="hover:text-slate-900">자소서</a>
-        <a href="/blog/mind-care" class="hover:text-slate-900">마음관리</a>
+        <a href="/quiz" class="hover:text-slate-900">무료 진단</a>
+        <a href="/blog/company-analysis/" class="hover:text-slate-900">기업이해</a>
+        <a href="/blog/interview/" class="hover:text-slate-900">면접</a>
+        <a href="/blog/cover-letter/" class="hover:text-slate-900">자소서</a>
+        <a href="/blog/mind-care/" class="hover:text-slate-900">마음관리</a>
         <a href="/#ebook" class="hover:text-slate-900">가이드북</a>
       </div>
       <div style="margin-top:16px;color:var(--text-secondary);font-size:0.95rem;">© 2026 당글. Contact: yuncontest@naver.com</div>
@@ -348,7 +404,7 @@ function pageShell({
 
 function buildGuideActions(readHref, readLabel = "글 읽기") {
   return `<div class="hero__actions">
-    <a href="/diagnosis" class="btn btn--primary">무료 진단</a>
+    <a href="/quiz" class="btn btn--primary">무료 진단</a>
     <a href="${readHref}" class="btn btn--secondary">${readLabel}</a>
     <a href="/#ebook" class="text-link text-link--muted">가이드북 보기</a>
   </div>`;
@@ -563,7 +619,8 @@ function buildTopicHub(topicKey, posts) {
 }
 
 function buildSitemap(urlItems) {
-  const body = urlItems
+  const uniqueItems = [...new Map(urlItems.map((item) => [item.loc, item])).values()];
+  const body = uniqueItems
     .map(
       (item) => `  <url>\n    <loc>${item.loc}</loc>\n    <lastmod>${item.lastmod}</lastmod>\n  </url>`
     )
@@ -573,46 +630,50 @@ function buildSitemap(urlItems) {
 
 function buildRedirects(posts) {
   const rewriteRules = [
-    `/diagnosis                                /diagnosis.html                                     200`,
-    `/blog                                     /blog_index.html                                    200`,
-    `/blog/                                    /blog_index.html                                    200`,
-    `/blog/company-analysis                    /${topicFile("companyUnderstanding")}                200`,
-    `/blog/interview                           /${topicFile("interview")}                           200`,
-    `/blog/cover-letter                        /${topicFile("coverLetter")}                         200`,
-    `/blog/mind-care                           /${topicFile("mindCare")}                            200`
+    `/blog/                                   /blog_index.html                                    200`,
+    `${topicRoute("companyUnderstanding").padEnd(41)} /${topicFile("companyUnderstanding").padEnd(50)} 200`,
+    `${topicRoute("interview").padEnd(41)} /${topicFile("interview").padEnd(50)} 200`,
+    `${topicRoute("coverLetter").padEnd(41)} /${topicFile("coverLetter").padEnd(50)} 200`,
+    `${topicRoute("mindCare").padEnd(41)} /${topicFile("mindCare").padEnd(50)} 200`
   ];
 
   const articleRewrites = posts.map(
     (post) => `${articleRoute(post).padEnd(41)} /${post.file.padEnd(50)} 200`
   );
+  const staticArticleRewrites = STATIC_ARTICLE_ROUTES.map(
+    ([route, file]) => `${route.padEnd(41)} /${file.padEnd(50)} 200`
+  );
 
   const legacyRedirects = [
-    `/diagnosis.html                           /diagnosis                                          301`,
-    `/blog_index.html                          /blog                                               301`,
-    `/blog/index.html                          /blog                                               301`,
-    `/blog/job-search-strategy                 /blog/mind-care                                     301`,
-    `/blog_post_company.html                   /blog/company-analysis-framework                    301`,
-    `/blog_post_coverletter_support_motivation_examples.html /blog/cover-letter-motivation-examples 301`,
-    `/blog_post_experience.html                /blog/experience-story-structuring                  301`,
-    `/blog_post_interview.html                 /blog/interview-strategy                            301`,
-    `/blog_post_interview_1min_self_intro_examples_master.html /blog/interview-1minute-self-introduction-examples 301`,
-    `/blog_post_interview_final_comment_examples.html /blog/interview-final-comment-examples        301`,
-    `/blog_post_nurse_jasoser_motivation.html  /blog/nurse-cover-letter-motivation                 301`,
-    `/blog_post_resume_structure.html          /blog/cover-letter-structure-3-steps                301`,
-    `/blog_post_secretary_jasoser_motivation.html /blog/secretary-cover-letter-motivation          301`,
-    `/blog_post_support.html                   /blog/job-search-scope-strategy                     301`,
-    `/blog_post_teacher_jasoser_motivation.html /blog/teacher-cover-letter-motivation              301`,
-    `/blog_index                               /blog                                               301`,
-    `/blog/posts/interview-strategy.html       /blog/interview-strategy                            301`,
-    `/blog/posts/experience-differentiation.html /blog/experience-story-structuring                301`,
-    `/blog/posts/nurse-jasoser-motivation.html /blog/nurse-cover-letter-motivation                 301`,
-    `/blog/posts/secretary-jasoser-motivation.html /blog/secretary-cover-letter-motivation         301`,
-    `/blog/posts/teacher-jasoser-motivation.html /blog/teacher-cover-letter-motivation             301`,
-    `/blog/posts/nurse-jasoser-personality.html /blog/cover-letter-structure-3-steps              301`,
-    `/blog/posts/jasoser-mistakes.html         /blog/cover-letter-structure-3-steps                301`
+    `/diagnosis                                /quiz                                               301`,
+    `/diagnosis/                               /quiz                                               301`,
+    `/diagnosis.html                           /quiz                                               301`,
+    `/blog                                    /blog/                                              301`,
+    `/blog_index.html                          /blog/                                              301`,
+    `/blog/index.html                          /blog/                                              301`,
+    `/blog/job-search-strategy                 /blog/mind-care/                                    301`,
+    `/blog_post_company.html                   /blog/company-analysis-framework/                   301`,
+    `/blog_post_coverletter_support_motivation_examples.html /blog/cover-letter-motivation-examples/ 301`,
+    `/blog_post_experience.html                /blog/experience-story-structuring/                 301`,
+    `/blog_post_interview.html                 /blog/interview-strategy/                           301`,
+    `/blog_post_interview_1min_self_intro_examples_master.html /blog/interview-1minute-self-introduction-examples/ 301`,
+    `/blog_post_interview_final_comment_examples.html /blog/interview-final-comment-examples/       301`,
+    `/blog_post_nurse_jasoser_motivation.html  /blog/nurse-cover-letter-motivation/                301`,
+    `/blog_post_resume_structure.html          /blog/cover-letter-structure-3-steps/               301`,
+    `/blog_post_secretary_jasoser_motivation.html /blog/secretary-cover-letter-motivation/         301`,
+    `/blog_post_support.html                   /blog/job-search-scope-strategy/                    301`,
+    `/blog_post_teacher_jasoser_motivation.html /blog/teacher-cover-letter-motivation/             301`,
+    `/blog_index                               /blog/                                              301`,
+    `/blog/posts/interview-strategy.html       /blog/interview-strategy/                           301`,
+    `/blog/posts/experience-differentiation.html /blog/experience-story-structuring/               301`,
+    `/blog/posts/nurse-jasoser-motivation.html /blog/nurse-cover-letter-motivation/                301`,
+    `/blog/posts/secretary-jasoser-motivation.html /blog/secretary-cover-letter-motivation/        301`,
+    `/blog/posts/teacher-jasoser-motivation.html /blog/teacher-cover-letter-motivation/            301`,
+    `/blog/posts/nurse-jasoser-personality.html /blog/cover-letter-structure-3-steps/              301`,
+    `/blog/posts/jasoser-mistakes.html         /blog/cover-letter-structure-3-steps/               301`
   ];
 
-  return [...rewriteRules, ...articleRewrites, "", ...legacyRedirects].join("\n") + "\n";
+  return [...rewriteRules, ...articleRewrites, ...staticArticleRewrites, "", ...legacyRedirects].join("\n") + "\n";
 }
 
 function main() {
@@ -625,18 +686,30 @@ function main() {
     };
   }).sort((a, b) => b.date.localeCompare(a.date));
 
-  writeFile("blog_index.html", buildBlogHub(posts));
+  const blogHub = buildBlogHub(posts);
+  writeFile("blog_index.html", blogHub);
+  writePrettyRoute("/blog/", blogHub);
 
   Object.keys(TOPICS).forEach((topicKey) => {
     const topicPosts = posts.filter((post) => post.topic === topicKey);
-    writeFile(topicFile(topicKey), buildTopicHub(topicKey, topicPosts));
+    const topicHub = buildTopicHub(topicKey, topicPosts);
+    writeFile(topicFile(topicKey), topicHub);
+    writePrettyRoute(topicRoute(topicKey), topicHub);
+  });
+
+  posts.forEach((post) => {
+    writePrettyRoute(articleRoute(post), normalizePrettyHtml(safeRead(post.file), articleRoute(post)));
+  });
+
+  STATIC_ARTICLE_ROUTES.forEach(([route, file]) => {
+    writePrettyRoute(route, normalizePrettyHtml(safeRead(file), route));
   });
 
   const today = new Date().toISOString().slice(0, 10);
   const pages = [
     { loc: `${BASE_URL}/`, lastmod: getLastModDate("index.html") },
-    { loc: `${BASE_URL}/diagnosis`, lastmod: getLastModDate("diagnosis.html") },
-    { loc: `${BASE_URL}/blog`, lastmod: today },
+    { loc: `${BASE_URL}/quiz`, lastmod: getLastModDate("quiz.html") },
+    { loc: `${BASE_URL}/blog/`, lastmod: today },
     ...Object.keys(TOPICS).map((topicKey) => ({
       loc: `${BASE_URL}${topicRoute(topicKey)}`,
       lastmod: today
@@ -644,6 +717,10 @@ function main() {
     ...posts.map((post) => ({
       loc: `${BASE_URL}${articleRoute(post)}`,
       lastmod: post.date
+    })),
+    ...STATIC_ARTICLE_ROUTES.map(([route, file]) => ({
+      loc: `${BASE_URL}${route}`,
+      lastmod: getLastModDate(file)
     }))
   ];
 
