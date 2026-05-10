@@ -629,21 +629,6 @@ function buildSitemap(urlItems) {
 }
 
 function buildRedirects(posts) {
-  const rewriteRules = [
-    `/blog/                                   /blog_index.html                                    200`,
-    `${topicRoute("companyUnderstanding").padEnd(41)} /${topicFile("companyUnderstanding").padEnd(50)} 200`,
-    `${topicRoute("interview").padEnd(41)} /${topicFile("interview").padEnd(50)} 200`,
-    `${topicRoute("coverLetter").padEnd(41)} /${topicFile("coverLetter").padEnd(50)} 200`,
-    `${topicRoute("mindCare").padEnd(41)} /${topicFile("mindCare").padEnd(50)} 200`
-  ];
-
-  const articleRewrites = posts.map(
-    (post) => `${articleRoute(post).padEnd(41)} /${post.file.padEnd(50)} 200`
-  );
-  const staticArticleRewrites = STATIC_ARTICLE_ROUTES.map(
-    ([route, file]) => `${route.padEnd(41)} /${file.padEnd(50)} 200`
-  );
-
   const legacyRedirects = [
     `/diagnosis                                /quiz                                               301`,
     `/diagnosis/                               /quiz                                               301`,
@@ -673,7 +658,7 @@ function buildRedirects(posts) {
     `/blog/posts/jasoser-mistakes.html         /blog/cover-letter-structure-3-steps/               301`
   ];
 
-  return [...rewriteRules, ...articleRewrites, ...staticArticleRewrites, "", ...legacyRedirects].join("\n") + "\n";
+  return legacyRedirects.join("\n") + "\n";
 }
 
 function main() {
