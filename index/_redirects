@@ -1,11 +1,13 @@
 # 검증/크롤링 파일은 리다이렉트 제외 (이전 처리용)
 /sitemap.xml /sitemap.xml 200
 /robots.txt /robots.txt 200
-/naver67fb56ce79e6982b36d5b7b5758133ac.html /naver67fb56ce79e6982b36d5b7b5758133ac.html 200
-/naver72c4f3ee7642d3c143d6330bb2b8a1f1.html /naver72c4f3ee7642d3c143d6330bb2b8a1f1.html 200
+/naver67fb56ce79e6982b36d5b7b5758133ac /naver67fb56ce79e6982b36d5b7b5758133ac 200
+/naver67fb56ce79e6982b36d5b7b5758133ac.html /naver67fb56ce79e6982b36d5b7b5758133ac 200
+/naver72c4f3ee7642d3c143d6330bb2b8a1f1 /naver72c4f3ee7642d3c143d6330bb2b8a1f1 200
+/naver72c4f3ee7642d3c143d6330bb2b8a1f1.html /naver72c4f3ee7642d3c143d6330bb2b8a1f1 200
 # TAK 리더십 진단은 별도 자산 - 유지
-/leader-diagnosis /leader-diagnosis.html 200
-/leader-diagnosis.html /leader-diagnosis.html 200
+/leader-diagnosis /leader-diagnosis 200
+/leader-diagnosis.html /leader-diagnosis 200
 /blog-post-career-change-coverletter https://jobok.co.kr/blog/cover-letter-job-change 301
 /blog-post-career-change-coverletter.html https://jobok.co.kr/blog/cover-letter-job-change 301
 /blog-post-civil-servant-coverletter https://jobok.co.kr/blog/public-company-cover-letter 301
